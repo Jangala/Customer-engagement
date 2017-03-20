@@ -1,0 +1,46 @@
+/* ==========================================================================
+   # TOOLTIP
+   ========================================================================== */
+
+/**
+ * 1.
+ */
+
+.c-tooltip {
+  position: absolute;
+  background-color: #184B94;
+  /*max-width: 100%;*/
+  width: inuit-rem(300px);
+  padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit;
+  color: white;
+  font-size: inuit-rem(12px);
+  line-height: 1.75;
+  font-weight: 600;
+  border-radius: 3px;
+  text-align: center;
+  z-index: 9999;
+
+  >:last-child {
+    margin-bottom: 0;
+  }
+
+  &--close-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.terse-tooltip-container {
+  display: none;
+  position: absolute;
+  width: 100%;
+  margin: 0px !important;
+  padding: 20px;
+  top: 0px;
+  left: 0px;
+  background-color: #184B94;
+  overflow: hidden;
+  color: #FFFFFF;
+  z-index: 9999;
+}

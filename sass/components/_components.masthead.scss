@@ -1,0 +1,44 @@
+/* ==========================================================================
+   # MASTHEAD
+   ========================================================================== */
+
+/**
+ * 1.
+ */
+
+.c-masthead {
+  @include clearfix();
+  border-bottom: #eee 1px solid;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  background-color: #FFF;
+  z-index: 1000;
+
+  &__logo {
+    margin-top: 10px;
+    float: left;
+  }
+
+  &__navbar {
+    @include mq($until: mediumlarge) {
+      overflow: hidden;
+      clear: right;
+    }
+    @include mq($from: mediumlarge) {
+      float: right;
+    }
+  }
+
+}
+
+.c-page-content {
+    display: block;
+    position: relative;
+    top: 40px;
+    margin-bottom: 40px;
+}
+
+.c-masthead__navbar {
+    top: 0px;
+}
