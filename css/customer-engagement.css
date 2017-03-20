@@ -1668,7 +1668,7 @@ a {
     margin-left: 1rem; }
 
 @media (max-width: 38.115em) {
-  .c-btn--terse {
+  .c-btn-terse {
     padding: 0px !important; } }
 
 /* ==========================================================================
@@ -2708,17 +2708,37 @@ input[type="range"]:focus + .c-linked-percent-slider .c-linked-percent-slider__h
     right: 0; }
 
 .terse-tooltip-container {
-  display: none;
-  position: absolute;
-  width: 100%;
-  margin: 0px !important;
-  padding: 20px;
-  top: 0px;
-  left: 0px;
-  background-color: #184B94;
-  overflow: hidden;
-  color: #FFFFFF;
-  z-index: 9999; }
+  display: none; }
+
+@media (max-width: 38.115em) {
+  .terse-tooltip-container {
+    display: none;
+    position: fixed;
+    width: 100%;
+    margin: 0px !important;
+    padding: 20px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: #184B94;
+    overflow: auto;
+    color: #FFFFFF;
+    z-index: 9999; }
+  .terse-tooltip-header {
+    font-weight: 700; } }
+
+@media (min-width: 75em) {
+  .terse-tooltip-container {
+    display: none !important; } }
+
+@media (min-width: 61.1875em) {
+  .terse-tooltip-container {
+    display: none !important; } }
+
+@media (min-width: 47.9375em) {
+  .terse-tooltip-container {
+    display: none !important; } }
 
 /* ==========================================================================
    # RATES-LOADING

@@ -323,6 +323,7 @@
         .on( 'click', '[data-js=trigger-tooltip]', function(event){toggleTooltips(event, this);})
         .on( 'click', '[data-js=close-tooltip]', function(event){closeTooltips()})
         .on('click', '.c-btn-terse', function(e){terseTooltips();})
+        .on('click', '.close-terse-tooltip', function(e){closeterseTooltips();})
         ;
     }
 
@@ -378,7 +379,12 @@
 
    function terseTooltips() {
     var height = $(window).height();
+    console.log('ok')
     $('.terse-tooltip-container').css({'display': 'block', 'height':height+'px'});
+   }
+
+   function closeterseTooltips() {
+    $('.terse-tooltip-container').css({'display': 'none'});
    }
 
     /**
