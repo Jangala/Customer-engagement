@@ -485,6 +485,7 @@
      * @param  {element} el The element that trigggered this call
      */
     function showRateDetails(el) {
+      
       var
         rateData = state.data_cache.rates.cleaned,
         program_id = $(el).parents('[data-js-program-id]').attr('data-js-program-id'),
@@ -1047,7 +1048,9 @@
         program = rateData.programs[program_id],
         rate = rateData.programs[program_id].rates[rate_id]
         ;
-
+        $('#createAccSubmit').attr('value', 'Create Account');
+        $('#createAccSubmit').attr("disabled",false);
+        $('#createAccSubmit').css({"background-color":"#FD8A10"});
       // record chosen rate and program
       state.chosen_rate = rate;
       state.chosen_program = program;
@@ -1274,7 +1277,10 @@
             console.log('validation success');
             $('.user-registration-error').hide();
             //Final user data submission with teaserRate data
-            createUserAccount(request_data);
+            $('#createAccSubmit').attr('value', 'Creating Account...');
+            $('#createAccSubmit').attr("disabled",true);
+           $('#createAccSubmit').css({"background-color":"#d3d3d3"});
+           // createUserAccount(request_data);
 
           }
 
