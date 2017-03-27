@@ -1280,7 +1280,7 @@
             $('#createAccSubmit').attr('value', 'Creating Account...');
             $('#createAccSubmit').attr("disabled",true);
            $('#createAccSubmit').css({"background-color":"#d3d3d3"});
-           // createUserAccount(request_data);
+           createUserAccount(request_data);
 
           }
 
