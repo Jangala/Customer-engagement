@@ -269,7 +269,7 @@
               required: true,
               zipCodeValidation: true,
               'remote':   {
-                url:        'http://52.74.75.203:8080/NewfiWeb/rest/states/zipCode',
+                url:        'https://www.newfi.com/NewfiWeb/rest/states/zipCode',
                 type:       'GET',
                 datatype:   'text',
                 data:       {zipCode: function(){return $('#zipcode').val();}},
@@ -996,7 +996,7 @@
     function getTeaserRateFromRemote(request_obj) {
       console.log(request_obj);
       return $.ajax({
-        url:      'http://52.74.75.203:8080/NewfiWeb/rest/calculator/findteaseratevalue',
+        url:      'https://www.newfi.com/NewfiWeb/rest/calculator/findteaseratevalue',
         type:     'POST',
         data:     {'teaseRate':  JSON.stringify(request_obj)},
         datatype: 'application/json',
@@ -1083,7 +1083,7 @@
         if(!lasearch) {
           lasearch = true;
           $.ajax({
-            url : "http://52.74.75.203:8080/NewfiWeb/rest/shopper/lasearch",
+            url : "https://www.newfi.com/NewfiWeb/rest/shopper/lasearch",
             method : "GET",
             datatype: "application/json",
             success : function(response) {
@@ -1150,7 +1150,7 @@
       // var validateUser = validateUserDetails(requestData);
 
       $.ajax({
-        url: 'http://52.74.75.203:8080/NewfiWeb/rest/shopper/record',
+        url: 'https://www.newfi.com/NewfiWeb/rest/shopper/record',
         method: 'POST',
         dataType: 'text',
         data: {'registrationDetails' : JSON.stringify(user_query)},
@@ -1266,7 +1266,7 @@
 
     function validateUserDetails(request_data) {
       $.ajax({
-        url : 'http://52.74.75.203:8080/NewfiWeb/rest/shopper/validate',
+        url : 'https://www.newfi.com/NewfiWeb/rest/shopper/validate',
         type : 'POST',
         dataType : 'text',
         data : {'registrationDetails' : JSON.stringify(request_data)},
@@ -1304,7 +1304,7 @@
       console.log(teaserRate)
 
       $.ajax({
-        url : 'http://52.74.75.203:8080/NewfiWeb/rest/shopper/registration',
+        url : 'https://www.newfi.com/NewfiWeb/rest/shopper/registration',
         type : 'POST',
         dataType : 'text',
         data : {'registrationDetails' : JSON.stringify(registration_details), 'teaseRateData' : JSON.stringify(teaserRate)},
