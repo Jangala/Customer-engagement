@@ -1722,7 +1722,12 @@
         delete programs['product_type'];
       }
 
-
+      //Display a maximum of 3 rates that are above the zero cost rate. 
+      for(var j = programs.length-1; j >= 0; j--) {
+        if (programs[j].rates && programs[j].rates.length > 3) {
+            programs[j].rates = programs[j].rates.slice(0, 4);
+        }
+      }
 
       // Add index properties to programs and rates, to be used in templates
       return {'programs': programs};
@@ -1730,9 +1735,6 @@
       // Return our parsed object
       return {'programs': programs};
     }
-
-
-
 
     // Start the show!
     init();
