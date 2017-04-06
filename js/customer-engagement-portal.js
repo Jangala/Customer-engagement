@@ -1723,7 +1723,7 @@
 
       //Display a maximum of 3 rates that are above the zero cost rate. 
       for(var j = programs.length-1; j >= 0; j--) {
-        if (programs[j].rates && programs[j].rates.length > 3) {
+        if (programs[j].rates && programs[j].rates.length > 4) {
             var ratesList = programs[j].rates.slice(0, 4);
             var lastRate = programs[j].rates.slice(-1)[0];
             ratesList.push(lastRate);
