@@ -5,6 +5,7 @@
 ;(function ($, window, document, undefined) {
   // Postpone execution until DOM is loaded
   $(function() {
+    var API_URL_PREFIX = "../NewfiWeb/rest/";
     /**
      * Setup several app-wide collections:
      * 1. dict:
@@ -269,7 +270,7 @@
               required: true,
               zipCodeValidation: true,
               'remote':   {
-                url:        '../NewfiWeb/rest/states/zipCode',
+                url:        API_URL_PREFIX+'states/zipCode',
                 type:       'GET',
                 datatype:   'text',
                 data:       {zipCode: function(){return $('#zipcode').val();}},
@@ -402,15 +403,13 @@
           $('.c-rates-listing__result').not('.c-rates-listing__result--lowestClosing').hide();
           $('.c-rates-listing__result--lowestClosing:hidden').fadeIn(200);
           break;
-        case 'all':
+        case 'all':          
           $('.c-rates-listing__result:hidden').fadeIn(200);
           break;
       }
     }
 
-
     /*validation for user registration form */
-
     function userRegistrationFormValidation() {
       userRegistrationValidator = dom.$user_registration_form.validate({
           rules: {
@@ -996,7 +995,7 @@
     function getTeaserRateFromRemote(request_obj) {
       console.log(request_obj);
       return $.ajax({
-        url:      '../NewfiWeb/rest/calculator/findteaseratevalue',
+        url:      API_URL_PREFIX+'calculator/findteaseratevalue',
         type:     'POST',
         data:     {'teaseRate':  JSON.stringify(request_obj)},
         datatype: 'application/json',
@@ -1083,7 +1082,7 @@
         if(!lasearch) {
           lasearch = true;
           $.ajax({
-            url : "../NewfiWeb/rest/shopper/lasearch",
+            url : API_URL_PREFIX+"shopper/lasearch",
             method : "GET",
             datatype: "application/json",
             success : function(response) {
@@ -1150,7 +1149,7 @@
       // var validateUser = validateUserDetails(requestData);
 
       $.ajax({
-        url: '../NewfiWeb/rest/shopper/record',
+        url: API_URL_PREFIX+'shopper/record',
         method: 'POST',
         dataType: 'text',
         data: {'registrationDetails' : JSON.stringify(user_query)},
@@ -1266,7 +1265,7 @@
 
     function validateUserDetails(request_data) {
       $.ajax({
-        url : '../NewfiWeb/rest/shopper/validate',
+        url : API_URL_PREFIX+'shopper/validate',
         type : 'POST',
         dataType : 'text',
         data : {'registrationDetails' : JSON.stringify(request_data)},
@@ -1304,7 +1303,7 @@
       console.log(teaserRate)
 
       $.ajax({
-        url : '../NewfiWeb/rest/shopper/registration',
+        url : API_URL_PREFIX+'shopper/registration',
         type : 'POST',
         dataType : 'text',
         data : {'registrationDetails' : JSON.stringify(registration_details), 'teaseRateData' : JSON.stringify(teaserRate)},
@@ -1616,9 +1615,6 @@
             rate.third_party_costs.owners_title_ins = 0;
           }
 
-
-
-
           var lowest_closing = rate.total_closing_costs;
 
 
@@ -1725,7 +1721,9 @@
       //Display a maximum of 3 rates that are above the zero cost rate. 
       for(var j = programs.length-1; j >= 0; j--) {
         if (programs[j].rates && programs[j].rates.length > 3) {
-            programs[j].rates = programs[j].rates.slice(0, 4);
+            var ratesList = programs[j].rates.slice(0, 4);
+            ratesList[3].tags.push('lowestRate');
+            programs[j].rates = ratesList;
         }
       }
 
