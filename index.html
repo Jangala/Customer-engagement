@@ -525,7 +525,7 @@
             <div class="c-form-element u-margin-bottom-small">
               <label class="c-form-element__label" for="zipcode">Zip Code</label>
               <div class="c-form-element__control">
-                <input id="zipcode" name="zipcode" class="c-input" type="text" />
+                <input id="zipcode" name="zipcode" class="c-input" type="text" maxlength="5" />
               </div>
             </div>
           </div>
@@ -610,7 +610,9 @@
               <div class="c-form-element__control c-input-has-fixed-addon">
                 <span class="c-form-element__addon c-form-element__addon--hanging-prefix">$</span>
                 <input id="estval" name="estval" class="c-input" type="text" data-format-as-currency />
+
               </div>
+              <label id="estval-compare-error" style="display: none; font-size: 0.68em; line-height: 1.333333;font-style: italic; font-style: italic; background-color: #EA7641; color: #FFFFFF; border-radius: 2px; padding: 0.125rem 0.35rem; margin: .33em .4rem 0;"> </label>
             </div>
           </div>
 

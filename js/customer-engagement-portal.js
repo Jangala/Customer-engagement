@@ -253,7 +253,22 @@
           if ($(this).valid()) {
             $('#basic-information').fadeOut(300);
             dom.$rate_list_error.fadeOut(300);
-            submitLoanDetailsForm();
+            if(state.chosen_loan_type == 'refinance' || state.chosen_loan_type == 'cashout') {
+              var estVal = parseInt($('#estval').val().replace(/,/g, ''));
+              var mortBal = parseInt($('#curmortgagebalance').val().replace(/,/g, ''));
+
+              if(estVal < mortBal) {
+                $('#estval-compare-error').text('Property value must be higher than loan amount : ' + mortBal);
+                $('#estval-compare-error').css('display', 'block');
+                return false;
+              } else {
+                $('#estval-compare-error').css('display', 'none');
+                submitLoanDetailsForm();
+              }
+
+            } else {
+              submitLoanDetailsForm();
+            }
           }
         })
         // Configure validation
