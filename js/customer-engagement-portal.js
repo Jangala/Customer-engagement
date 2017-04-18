@@ -1757,13 +1757,7 @@
           console.log(programs[i].display_name + " : "+programs[i].rates[j].total_closing_costs + " : Index "+indexToSplice);
           programs[i].rates = programs[i].rates.splice(indexToSplice,programs[i].rates.length);
         }
-
-        // Display a maximum of 3 rates that are above the zero cost rate. 
-        if (programs[i].rates && programs[i].rates.length > 3) {
-            var ratesList = programs[i].rates.slice(0, 4);
-            ratesList[3].tags.push('lowestRate');
-            programs[i].rates = ratesList;
-        }
+        
       }
 
       // Add index properties to programs and rates, to be used in templates
