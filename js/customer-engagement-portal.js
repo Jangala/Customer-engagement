@@ -253,7 +253,22 @@
           if ($(this).valid()) {
             $('#basic-information').fadeOut(300);
             dom.$rate_list_error.fadeOut(300);
-            submitLoanDetailsForm();
+            if(state.chosen_loan_type == 'refinance' || state.chosen_loan_type == 'cashout') {
+              var estVal = parseInt($('#estval').val().replace(/,/g, ''));
+              var mortBal = parseInt($('#curmortgagebalance').val().replace(/,/g, ''));
+
+              if(estVal < mortBal) {
+                $('#estval-compare-error').text('Property value must be higher than loan amount : ' + mortBal);
+                $('#estval-compare-error').css('display', 'block');
+                return false;
+              } else {
+                $('#estval-compare-error').css('display', 'none');
+                submitLoanDetailsForm();
+              }
+
+            } else {
+              submitLoanDetailsForm();
+            }
           }
         })
         // Configure validation
@@ -1716,39 +1731,6 @@
 
       if(programs.product_type) {
         delete programs['product_type'];
-      }
-
-      // Display a maximum of 3 rates that are above the zero cost rate. 
-      for (var i = programs.length-1; i >= 0; i--) {
-
-       // If 0 closing cost available in between then discard aboved 0 closing cost rates 
-       var isZeroClosingCostExist = false;
-       var isClosingCostDisordered = false;
-       var indexToSplice = 0;
-
-       for (var j = 0; j < programs[i].rates.length; j++) {
-          if (programs[i].rates[j].total_closing_costs == 0) {
-            isZeroClosingCostExist = true;
-            break;
-          }
-
-          if (programs[i].rates[j].total_closing_costs != 0) {
-            isClosingCostDisordered = true;
-            indexToSplice = j + 1;
-          }
-        }
-
-        if (isZeroClosingCostExist && isClosingCostDisordered) {
-          console.log(programs[i].display_name + " : "+programs[i].rates[j].total_closing_costs + " : Index "+indexToSplice);
-          programs[i].rates = programs[i].rates.splice(indexToSplice,programs[i].rates.length);
-        }
-
-        // Display a maximum of 3 rates that are above the zero cost rate. 
-        if (programs[i].rates && programs[i].rates.length > 3) {
-            var ratesList = programs[i].rates.slice(0, 4);
-            ratesList[3].tags.push('lowestRate');
-            programs[i].rates = ratesList;
-        }
       }
 
       // Add index properties to programs and rates, to be used in templates
