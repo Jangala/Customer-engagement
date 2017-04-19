@@ -1733,33 +1733,6 @@
         delete programs['product_type'];
       }
 
-      // Display a maximum of 3 rates that are above the zero cost rate. 
-      for (var i = programs.length-1; i >= 0; i--) {
-
-       // If 0 closing cost available in between then discard aboved 0 closing cost rates 
-       var isZeroClosingCostExist = false;
-       var isClosingCostDisordered = false;
-       var indexToSplice = 0;
-
-       for (var j = 0; j < programs[i].rates.length; j++) {
-          if (programs[i].rates[j].total_closing_costs == 0) {
-            isZeroClosingCostExist = true;
-            break;
-          }
-
-          if (programs[i].rates[j].total_closing_costs != 0) {
-            isClosingCostDisordered = true;
-            indexToSplice = j + 1;
-          }
-        }
-
-        if (isZeroClosingCostExist && isClosingCostDisordered) {
-          console.log(programs[i].display_name + " : "+programs[i].rates[j].total_closing_costs + " : Index "+indexToSplice);
-          programs[i].rates = programs[i].rates.splice(indexToSplice,programs[i].rates.length);
-        }
-        
-      }
-
       // Add index properties to programs and rates, to be used in templates
       return {'programs': programs};
 
