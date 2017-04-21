@@ -1452,10 +1452,22 @@
         return;
       }
 
+      var dictObj = {
+          'entered_loan_details': {'category': 'Rate Quote', 'action': 'Entered Loan Details'},
+          'viewed_rate':          {'category': 'Rate Quote', 'action': 'Viewed Rate Details'},
+          'selected_rate':        {'category': 'Rate Quote', 'action': 'Selected a Rate'}
+        }
+
+      var stateObj =  {
+          'entered_loan_details': false,
+          'viewed_rate':          false,
+          'selected_rate':        false
+        }
+
       // Send a generic event if we don't have explicit details and state stored
       if (
-        typeof dict.tracking_events[tracking_event] !== 'undefined' &&
-        typeof state.tracking_events[tracking_event] !== 'undefined')
+        typeof dictObj[tracking_event] !== 'undefined' &&
+        typeof stateObj[tracking_event] !== 'undefined')
       {
         ga('send', {
           'hitType':       'event',
@@ -1466,8 +1478,8 @@
       // Otherwise get data from dict and set state appropriately
       } else {
         var
-          fields = dict.tracking_events[tracking_event],
-          state  = state.tracking_events[tracking_event]
+          fields = dictObj[tracking_event],
+          state  = stateObj[tracking_event]
           ;
         if (one_time && state === false ) {
           ga('send', {
