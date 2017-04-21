@@ -1558,6 +1558,7 @@
         // afer the loop.
         var lowest_rate_index = 0;
         var lowest_closing_index = 0;
+        var lowest_closing_value = undefined;
         var lowest_points_index = 0;
 
         // Iterate over the program's rates in the raw result object.
@@ -1632,10 +1633,21 @@
 
           var lowest_closing = rate.total_closing_costs;
 
-
-          if ( lowest_closing == 0){
-            lowest_closing_index = raw_rate_index;
+          if (lowest_closing >= 0) {
+            if (lowest_closing_value == undefined) {
+              lowest_closing_value = lowest_closing;
+              lowest_closing_index = raw_rate_index;
+            } else {
+              if (lowest_closing <= lowest_closing_value){
+                  lowest_closing_value = lowest_closing;   
+                  lowest_closing_index = raw_rate_index;
+              }
+            }  
           }
+
+          // if ( lowest_closing == 0){
+          //   lowest_closing_index = raw_rate_index;
+          // }
 
           /**
            *
@@ -1688,20 +1700,12 @@
           }
 
         });
-
+        
         program.rates[lowest_rate_index].tags.push('lowestRate');
         program.rates[lowest_closing_index].tags.push('lowestClosing');
         program.rates[lowest_points_index].tags.push('lowestPoints');
 
-      });
-
-      for(var i = 0; i < programs.length; i++) {
-        for(var j = programs[i].rates.length - 1; j >= 0; j--) {
-          if(programs[i].rates[j].total_closing_costs == 0 && programs[i].rates[j].tags[0] !== "lowestClosing") {
-            programs[i].rates.splice(j,1);
-          }
-        }
-      }
+      });      
 
       // Sort programs into preferred order
       programs = _.sortBy(programs, [function(o) {
@@ -1733,10 +1737,39 @@
         delete programs['product_type'];
       }
 
-      // Add index properties to programs and rates, to be used in templates
-      return {'programs': programs};
+      // Display a maximum of 4 rates that are above lowest closing cost 
+      for (var i = 0; i < programs.length; i++) {
+        for (var j = programs[i].rates.length - 1; j >= 0; j--) {
+          if (programs[i].rates[j].tags[0] === "lowestClosing" || 
+                programs[i].rates[j].tags[1] === "lowestClosing" || 
+                programs[i].rates[j].tags[2] === "lowestClosing") {
 
-      // Return our parsed object
+            var rateList = [];
+            var ratesValue = [];
+
+            for (var k = j ; j < programs[i].rates.length - 1; k++) {
+              if (rateList.length < 4 && programs[i].rates[k]) {
+
+                // if rate value is not duplicated
+                if (ratesValue.indexOf(programs[i].rates[k].total_closing_costs) == -1) {
+                  rateList.push(programs[i].rates[k]);
+                  ratesValue.push(programs[i].rates[k].total_closing_costs);    
+                } else {
+                  rateList[rateList.length -1] = programs[i].rates[k];
+                }
+              } else {
+                break;
+              }
+            }
+            
+            rateList[rateList.length - 1].tags.push('lowestRate');
+            programs[i].rates = rateList;
+            break;
+          }
+        }
+      }
+
+      // Add index properties to programs and rates, to be used in templates
       return {'programs': programs};
     }
 
