@@ -1448,7 +1448,7 @@
       one_time = (typeof one_time === 'undefined') ? true: one_time;
 
       // abort if we don't have a trackign object
-      if (typeof ga == 'undefined') {
+      if (typeof ga !== 'undefined') {
         return;
       }
 
