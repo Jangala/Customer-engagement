@@ -6,6 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <title>Newfi</title>
 
+
+  <!-- Google Analytics tracking -->
+
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-67273341-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
   <!-- Lato is Newfi's primary typeface. We're using TYpekit's version in prefernce to
        Google's as it is a newer version, with significantly better typographic fratures and additiona weights.
   -->
@@ -117,16 +129,6 @@
 
   <!-- Main app script; handles all aspects of UX for portal -->
   <script type="text/javascript" src="./js/customer-engagement-portal.js"></script>
-
-  <!-- Google Analytics tracking -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-67273341-1', 'auto');
-    ga('send', 'pageview');
-  </script>
 
 <!-- /build -->
 
@@ -525,7 +527,7 @@
             <div class="c-form-element u-margin-bottom-small">
               <label class="c-form-element__label" for="zipcode">Zip Code</label>
               <div class="c-form-element__control">
-                <input id="zipcode" name="zipcode" class="c-input" type="text" />
+                <input id="zipcode" name="zipcode" class="c-input" type="text" maxlength="5" />
               </div>
             </div>
           </div>
@@ -611,6 +613,7 @@
                 <span class="c-form-element__addon c-form-element__addon--hanging-prefix">$</span>
                 <input id="estval" name="estval" class="c-input" type="text" data-format-as-currency />
               </div>
+              <label id="estval-compare-error" style="display: none; font-size: 0.68em; line-height: 1.333333;font-style: italic; font-style: italic; background-color: #EA7641; color: #FFFFFF; border-radius: 2px; padding: 0.125rem 0.35rem; margin: .33em .4rem 0;"> </label>
             </div>
           </div>
 
