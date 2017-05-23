@@ -415,6 +415,13 @@
      
    }
 
+   $('#zipcode').on('keypress', function(e){
+      if (e.which < 48 || e.which > 57)
+      {
+          e.preventDefault();
+      }
+    });
+
    function closeTooltips() {
       $('.c-tooltip').remove();
    }
