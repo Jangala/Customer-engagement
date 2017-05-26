@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <title>Newfi</title>
-
+  
 
   <!-- Google Analytics tracking -->
 
@@ -44,10 +44,16 @@
 
        The following code is required to load appropriate styles for any given browser.
   -->
+
+  
+
+
   <script type="text/javascript">
   /*! grunt-grunticon Stylesheet Loader - v2.1.6 | https://github.com/filamentgroup/grunticon | (c) 2015 Scott Jehl, Filament Group, Inc. | MIT license. */
   !function(){function e(e,n,t){"use strict";var o=window.document.createElement("link"),a=n||window.document.getElementsByTagName("script")[0],i=window.document.styleSheets;return o.rel="stylesheet",o.href=e,o.media="only x",a.parentNode.insertBefore(o,a),o.onloadcssdefined=function(e){for(var n,t=0;t<i.length;t++)i[t].href&&i[t].href===o.href&&(n=!0);n?e():setTimeout(function(){o.onloadcssdefined(e)})},o.onloadcssdefined(function(){o.media=t||"all"}),o}function n(e,n){e.onload=function(){e.onload=null,n&&n.call(e)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in e&&e.onloadcssdefined(n)}!function(t){var o=function(a,i){"use strict";if(a&&3===a.length){var r=t.navigator,d=t.document,s=t.Image,c=!(!d.createElementNS||!d.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!d.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||t.opera&&r.userAgent.indexOf("Chrome")===-1||r.userAgent.indexOf("Series40")!==-1),l=new s;l.onerror=function(){o.method="png",o.href=a[2],e(a[2])},l.onload=function(){var t=1===l.width&&1===l.height,r=a[t&&c?0:t?1:2];t&&c?o.method="svg":t?o.method="datapng":o.method="png",o.href=r,n(e(r),i)},l.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",d.documentElement.className+=" grunticon"}};o.loadCSS=e,o.onloadCSS=n,t.grunticon=o}(this)}();
   grunticon(["./css/icons/icons.data.svg.css", "./css/icons/icons.data.png.css", "./css/icons/icons.fallback.css"], grunticon.svgLoadedCallback);
+
+
   </script>
   <noscript><link href="./css/icons/icons.fallback.css" rel="stylesheet"></noscript>
 
@@ -527,7 +533,7 @@
             <div class="c-form-element u-margin-bottom-small">
               <label class="c-form-element__label" for="zipcode">Zip Code</label>
               <div class="c-form-element__control">
-                <input id="zipcode" name="zipcode" class="c-input" type="text"/>
+                <input id="zipcode" name="zipcode" class="c-input" type="text" maxlength="5" />
               </div>
             </div>
           </div>
@@ -612,8 +618,9 @@
               <div class="c-form-element__control c-input-has-fixed-addon">
                 <span class="c-form-element__addon c-form-element__addon--hanging-prefix">$</span>
                 <input id="estval" name="estval" class="c-input" type="text" data-format-as-currency />
+
               </div>
-              <!-- <label id="estval-compare-error" style="display: none; font-size: 0.68em; line-height: 1.333333;font-style: italic; font-style: italic; background-color: #EA7641; color: #FFFFFF; border-radius: 2px; padding: 0.125rem 0.35rem; margin: .33em .4rem 0;"> </label> -->
+              <label id="estval-compare-error" style="display: none; font-size: 0.68em; line-height: 1.333333;font-style: italic; font-style: italic; background-color: #EA7641; color: #FFFFFF; border-radius: 2px; padding: 0.125rem 0.35rem; margin: .33em .4rem 0;"> </label>
             </div>
           </div>
 
@@ -721,7 +728,7 @@
 
     <!-- Error message if we don't get any rate list -->
     <section class="o-wrapper o-wrapper--narrow u-margin-top-none u-margin-bottom" data-js="rate-list-error" style="display: none; margin-bottom: 50px !important; text-align: center; padding: 30px;">
-      <span id="rate-list-error" style="font-size: 14px; color: rgba(24, 72, 141, 0.9);"> We were unable to match you with the right program based on the information you provided.But don't worry, you can call us during normal business hours at 888-316-3934 or complete the form below and someone from the Newfi team will contact you to review your options.</span>
+      <span id="rate-list-error" style="font-size: 14px; color: rgba(24, 72, 141, 0.9);"> We were unable to match you with the right program based on the information you provided. But don't worry, you can call us during normal business hours at 888-316-3934 or complete the form below and someone from the Newfi team will contact you to review your options.</span>
 
       <div class="o-layout__item" style="width: 50%; margin-top: 30px;">
         <form data-js="user-query-form">
@@ -876,9 +883,9 @@
 
         <div class="o-layout__item u-1/1">
           <div class="c-footer__norton-seal" id="nortonSeal">
-        		<script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=www.newfi.com&size=XS&use_flash=NO&use_transparent=NO&lang=en"></script>
-        		<!-- <a href="http://www.symantec.com/ssl-certificates" target="_blank"  style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ABOUT SSL CERTIFICATES</a> -->
-        	</div>
+            <script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=www.newfi.com&size=XS&use_flash=NO&use_transparent=NO&lang=en"></script>
+            <!-- <a href="http://www.symantec.com/ssl-certificates" target="_blank"  style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ABOUT SSL CERTIFICATES</a> -->
+          </div>
           <p class="u-text-centered">© 2016 newfi dba of Nexera Holding LLC | All Rights Reserved | NMLS ID 1231327 | <a target="_blank" href="http://www.nmlsconsumeraccess.org/Home.aspx/SubSearch?searchText=newfi" class="consumer-access-footer">NMLS Consumer Access</a></p>
           <p class="u-text-centered"><a href="https://portal.hud.gov/hudportal/HUD" target="_blank">Equal Housing Lender <span class="o-icon o-icon--hud-logo"></span></a></p>
         </div>
@@ -966,15 +973,13 @@
   <!-- END DEVELOPMENT TOOLS -->
 <!-- /build -->
 
-  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
 
   <noscript>
     <div style="display:inline;">
-      <img height="1" width="1" style="border-style:none;" alt="" src="www.googleadservices.com/pagead/conversion/863852039/?label=w_1kCIGMlW0Qh6z1mwM&amp;guid=ON&amp;script=0"/>
+      <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/863852039/?label=w_1kCIGMlW0Qh6z1mwM&amp;guid=ON&amp;script=0"/>
     </div>
   </noscript>
-  <!-- END Google Adwords Conversion Tag -->
-
 </body>
 
 </html>

@@ -253,23 +253,48 @@
           if ($(this).valid()) {
             $('#basic-information').fadeOut(300);
             dom.$rate_list_error.fadeOut(300);
+            if(state.chosen_loan_type == 'refinance') {
 
-            // if(state.chosen_loan_type == 'refinance' || state.chosen_loan_type == 'cashout') {
-            //   var estVal = parseInt($('#estval').val().replace(/,/g, ''));
-            //   var mortBal = parseInt($('#curmortgagebalance').val().replace(/,/g, ''));
+              var estVal = parseInt($('#estval').val().replace(/,/g, ''));
+              var mortBal = parseInt($('#curmortgagebalance').val().replace(/,/g, ''));
 
-            //   if(estVal < mortBal) {
-            //     $('#estval-compare-error').text('Property value must be higher than loan amount : ' + mortBal);
-            //     $('#estval-compare-error').css('display', 'block');
-            //     return false;
-            //   } else {
-            //     $('#estval-compare-error').css('display', 'none');
-            //     submitLoanDetailsForm();
-            //   }
+              if(estVal < mortBal) {
 
-            // } else {
+                $('#estval-compare-error').text('Property value must be higher than loan amount : ' + mortBal);
+                $('#estval-compare-error').css('display', 'block');
+                return false;
+
+              } else {
+
+                $('#estval-compare-error').css('display', 'none');
+                submitLoanDetailsForm();
+
+              }
+
+            } else if(state.chosen_loan_type == 'cashout') {
+
+              var estVal = parseInt($('#estval').val().replace(/,/g, ''));
+              var mortBal = parseInt($('#curmortgagebalance').val().replace(/,/g, ''));
+              var cashout = parseInt($('#cashout').val().replace(/,/g, ''));
+              var total = mortBal + cashout;
+
+              if(estVal < total) {
+
+                $('#estval-compare-error').text('Property value must be higher than loan amount : ' + total);
+                $('#estval-compare-error').css('display', 'block');
+                
+                return false;
+
+              } else {
+
+                $('#estval-compare-error').css('display', 'none');
+                submitLoanDetailsForm();
+
+              }
+
+            } else {
               submitLoanDetailsForm();
-            // }
+            }
           }
         })
         // Configure validation
@@ -389,6 +414,13 @@
      // });
      
    }
+
+   $('#zipcode').on('keypress', function(e){
+      if (e.which < 48 || e.which > 57)
+      {
+          e.preventDefault();
+      }
+    });
 
    function closeTooltips() {
       $('.c-tooltip').remove();
@@ -1125,7 +1157,7 @@
             }
           }
         }
-  	  });
+      });
     }
 
     /**
@@ -1207,15 +1239,15 @@
               'buyhomeZipPri':   cache.purchaseDetails.zipCode
             },
             "propertyTypeMaster": {
-          		'propertyTypeCd': cache.propertyType,
-          		'residenceTypeCd': cache.residenceType,
-          		'homeZipCode': cache.zipCode
-          	},
+              'propertyTypeCd': cache.propertyType,
+              'residenceTypeCd': cache.residenceType,
+              'homeZipCode': cache.zipCode
+            },
             'loanAmount':             cache.loanAmount,
             'user' : {
               'firstName': v.firstName,
-          		'lastName': v.lastName,
-          		'emailId': v.emailId
+              'lastName': v.lastName,
+              'emailId': v.emailId
             }
           };
           break;
@@ -1223,26 +1255,26 @@
         case 'refinance':
           return {
             'loanType':               {
-            		"loanTypeCd": "REF"
-            	},
+                "loanTypeCd": "REF"
+              },
               "refinancedetails": {
-            		"refinanceOption": "REFLMP",
-            		"currentMortgageBalance": cache.currentMortgageBalance,
-            		"includeTaxes": cache.isIncludeTaxes
-            	},
+                "refinanceOption": "REFLMP",
+                "currentMortgageBalance": cache.currentMortgageBalance,
+                "includeTaxes": cache.isIncludeTaxes
+              },
               "propertyTypeMaster": {
-            		"homeWorthToday": cache.homeWorthToday,
-            		"homeZipCode": cache.zipCode,
-            		"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
-            		"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
-            		"propertyTypeCd": cache.propertyType,
-            		"residenceTypeCd": cache.residenceType
-            	},
+                "homeWorthToday": cache.homeWorthToday,
+                "homeZipCode": cache.zipCode,
+                "propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
+                "propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
+                "propertyTypeCd": cache.propertyType,
+                "residenceTypeCd": cache.residenceType
+              },
             'loanAmount': cache.loanAmount,
             'user' : {
               'firstName': v.firstName,
-          		'lastName': v.lastName,
-          		'emailId': v.emailId
+              'lastName': v.lastName,
+              'emailId': v.emailId
             }
           };
           break;
@@ -1250,27 +1282,27 @@
         case 'cashout':
           return {
             'loanType':               {
-            		"loanTypeCd": "REF"
-            	},
+                "loanTypeCd": "REF"
+              },
               "refinancedetails": {
-            		"refinanceOption": "REFCO",
+                "refinanceOption": "REFCO",
                 "cashTakeOut": cache.cashTakeOut,
-            		"currentMortgageBalance": cache.currentMortgageBalance,
-            		"includeTaxes": cache.isIncludeTaxes
-            	},
+                "currentMortgageBalance": cache.currentMortgageBalance,
+                "includeTaxes": cache.isIncludeTaxes
+              },
               "propertyTypeMaster": {
-            		"homeWorthToday": cache.homeWorthToday,
-            		"homeZipCode": cache.zipCode,
-            		"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
-            		"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
-            		"propertyTypeCd": cache.propertyType,
-            		"residenceTypeCd": cache.residenceType
-            	},
+                "homeWorthToday": cache.homeWorthToday,
+                "homeZipCode": cache.zipCode,
+                "propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
+                "propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
+                "propertyTypeCd": cache.propertyType,
+                "residenceTypeCd": cache.residenceType
+              },
             'loanAmount': cache.loanAmount,
             'user' : {
               'firstName': v.firstName,
-          		'lastName': v.lastName,
-          		'emailId': v.emailId
+              'lastName': v.lastName,
+              'emailId': v.emailId
             }
           };
           break;
@@ -1455,15 +1487,15 @@
 
       var dictObj = {
           'entered_loan_details': {'category': 'Rate Quote', 'action': 'Entered Loan Details'},
-           'viewed_rate':          {'category': 'Rate Quote', 'action': 'Viewed Rate Details'},
-           'selected_rate':        {'category': 'Rate Quote', 'action': 'Selected a Rate'}
-         }
- 
-       var stateObj =  {
-           'entered_loan_details': false,
-           'viewed_rate':          false,
-           'selected_rate':        false
-         }
+          'viewed_rate':          {'category': 'Rate Quote', 'action': 'Viewed Rate Details'},
+          'selected_rate':        {'category': 'Rate Quote', 'action': 'Selected a Rate'}
+        }
+
+      var stateObj =  {
+          'entered_loan_details': false,
+          'viewed_rate':          false,
+          'selected_rate':        false
+        }
 
       // Send a generic event if we don't have explicit details and state stored
       if (
