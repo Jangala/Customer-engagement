@@ -125,7 +125,9 @@ module.exports = function(grunt) {
 					{expand: true, src: ['css/icons/png/**'], dest: 'prod'},
 					{expand: true, src: ['css/icons/*.css'], dest: 'prod'},
 					{expand: true, src: ['js/vendors/jquery-*.min.js'], dest: 'prod'},
-					{expand: true, src: ['js/vendors/js_cookie.js'], dest: 'prod'}
+					{expand: true, src: ['js/vendors/js_cookie.js'], dest: 'prod'},
+					{expand: true, src: ['js/vendors/bootstrap.custom.js'], dest: 'prod'},
+					{expand: true, src: ['js/mobilenav.js'], dest: 'prod'}
 				],
 			},
 		},
