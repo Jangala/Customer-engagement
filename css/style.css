@@ -1,0 +1,1250 @@
+/* Global Styles */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	/*margin: 0;
+	padding: 0;*/
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@font-face {
+    font-family: robotoregular;
+    src: local('robotoregular'), url("../fonts/roboto/Roboto-Regular.eot");;
+    src: url('../fonts/roboto/Roboto-Regular.eot') format("embedded-opentype"), url("../fonts/roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url('../fonts/roboto/Roboto-Regular.woff') format("woff"), url('../fonts/roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font: normal 14px robotoregular, sans-serif;
+    
+}
+
+.navbar-toggle {
+    border-color: transparent;
+}
+.navbar-toggle .icon-bar {
+    background-color: #000;
+}
+.navbar-brand>img {
+    display: initial;
+}
+.navbar-brand{
+	    font-size: 20px;
+	        color: #333333;
+}
+.navbar-brand img{
+	    vertical-align: baseline;
+	    padding-left: 10px;
+}
+.back_text{
+	background: #0c5497;
+	color: #ffffff;
+}
+.back_text h3{
+	margin-top: 97px;
+    margin-bottom: 95px;
+}
+.back_text .container{
+	text-align: center;
+	    height: 225px;
+}
+.navbar{
+	margin-bottom: 0px;
+}
+.hei_main{
+	padding-top: 50px !important;
+	padding-bottom: 40px !important;
+}
+.hei_sec h3{
+	padding-top: 90px !important;
+	padding-bottom: 90px !important;
+}
+.hei_third h3{
+	padding-top: 60px !important;
+	padding-bottom: 30px !important;
+}
+.hei_third_B h3{
+	padding-top: 140px !important;
+	padding-bottom: 15px !important;
+}
+.hei_third{
+	    padding-bottom: 140px;
+}
+.hei_forth h3{
+	padding-top: 120px;
+    padding-bottom: 100px;
+}
+.line_wide{
+    border: 1px dashed #cccccc;
+    margin-top: 0px !important;
+    margin-bottom: 0px!important;
+    overflow-x:hidden;
+    border-bottom: 0px;
+}
+.subhead{
+	padding: 20px 5px 40px 5px;
+    text-align: center;
+}
+.subhead h2, .subhead h3{
+	color: #000;
+	font-size:  3.125em;
+    font-family: 'Roboto Thin', sans-serif;
+	 font-weight: 100;
+	margin-top: 0px;
+}
+.nav-tabs a{
+text-decoration: none;
+color:#aaaaaa;
+} 
+.padd_zero{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+    color: #9c9c9c;
+    background-color: #fff;
+     border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+.nav-tabs {
+    border-bottom: 0px solid #ddd;
+}
+#home_Purchase h3{
+padding-bottom: 40px;
+}
+.drop_padd_bottom{
+	padding-bottom: 85px;
+	  overflow: hidden;
+}
+ .drop_padd Select { -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: transparent url('../images/br_down.png') no-repeat 60px center;
+    border-bottom: 1px solid;
+   background-position: right;
+}
+
+.drop_btn .btn{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    text-align: left;
+    border-radius: 0px;
+    color: #9c9c9c;
+    font-size:  1.6em ;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+.drop_btn .btn span{
+font-size: 0.6em;
+}
+.pur{
+    padding: 45px;
+}
+
+.icon_1{
+    display: inline-block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border:1px solid #ededed;
+        margin-bottom: 10px;
+}
+
+.icon_2{
+    display: inline-block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border:1px solid #ededed;
+    margin-bottom: 10px;
+}
+
+.icon_3{
+    display: inline-block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    
+    border:1px solid #ededed;
+        margin-bottom: 10px;
+}
+.mobi_txt{
+	text-align: center;
+	color: #aaaaaa;
+	font-size:  1.25em ;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+
+	 padding-bottom: 20px;
+}
+.mobi_txt a{
+	color: #aaaaaa;
+	text-decoration: none;
+}
+.btn_next .btn{
+    border-radius: 0px;
+}
+.btn_next .btn-warning{
+	background-color: #f27521;
+    border-color: #f27521;
+    margin-bottom: 0px;
+    padding: 10px 10px;
+    font-size:  1.4em ;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+.btn_next .btn-warning:hover {
+    color: #fff;
+    background-color: #f27521;
+    border-color: #f27521;
+}
+.iphone_xs{
+	    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.icn_unit1{
+	background-image: url('../images/icn_unit1.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+        background-size: 50px; 
+}
+.icn_unit1:hover,.icn_unit1:visited{
+	background-image: url('../images/icn_unit1_w.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color:#f27622;
+	border-radius: 50%;
+	    background-size: 50px;
+}
+.icn_condo{
+	background-image: url('../images/icn_condo.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+}
+.icn_condo:hover,.icn_condo:focus, .icn_condo_selected{
+	background-image: url('../images/icn_condo_w.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color:#f27622;
+	border-radius: 50%;
+	background-size: 50px;
+}
+.icn_unit2{
+	background-image: url('../images/icn_unit2.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+}
+.icn_unit2:hover,.icn_unit2:focus{
+	background-image: url('../images/icn_unit2_w.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color:#f27622;
+	border-radius: 50%;
+	background-size: 50px;
+}
+.icn_unit3{
+	background-image: url('../images/icn_unit3.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+}
+.icn_unit3:hover,.icn_unit3:focus{
+	background-image: url('../images/icn_unit3_w.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color:#f27622;
+	border-radius: 50%;
+	background-size: 50px;
+}
+.icn_unit4{
+	background-image: url('../images/icn_unit4.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+}
+.icn_unit4:hover,.icn_unit4:focus{
+	background-image: url('../images/icn_unit4_w.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color:#f27622;
+	border-radius: 50%;
+	background-size: 50px;
+}
+.unit1_2_xs{
+	margin: 20px;
+}
+.txt_unit,.txt_unit1,.txt_unit2{
+	color: #000;
+    font-size: 1em ;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+     text-align: center;
+}
+.section_unit{
+	padding-bottom: 120px;
+}
+.ali_dev1{
+	 padding-right: 35px;
+	 color: #000;
+    font-size:  1.2em ;
+    font-family: 'Roboto Thin', sans-serif;
+}
+.ali_dev2{
+	    padding-left: 65px;
+	    color: #9c9c9c;
+    font: normal 1.4em 'Roboto Thin', sans-serif;
+}
+.xs_resize_hu{
+	text-align: center;
+}
+.sec_unit_mar{
+	margin-top: 20px;
+}
+
+.Primary_re{
+	background-image: url('../images/prim_recidency.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+}
+.Primary_re:hover{
+	background-image: url('../images/prim_recidency_w.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color:#f27521;
+	border-radius: 50%;
+	
+}
+.Vacation_h{
+	background-image: url('../images/vacation1.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+    background-size: 77px;
+}
+.Vacation_h:hover{
+	background-image: url('../images/vacation_w.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color:#24408f;
+	border-radius: 50%;
+	
+}
+.Investment_p{
+	background-image: url('../images/Investment.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 55px;
+}
+.Investment_p:hover{
+	background-image: url('../images/Investment_w.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color:#01aabe;
+	border-radius: 50%;
+	
+}
+.drop_btn .dropdown-menu{
+	width: 100%;
+	font-size:  1.4em ;
+	font-family: 'Roboto Thin', sans-serif
+}
+.dropdown.btn-default:hover{
+	background-color: #fff;
+}
+.active{
+	display: block !important;
+}
+
+.btn_next{
+	padding-top: 50px;
+}
+
+.dash{
+	border-style: dashed;
+	    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#pro_loc_content,#Purchase, #property_content, #property_content,#select_property{
+	display: none;
+}
+#select_property .subhead h3{
+padding-top: 40px;
+padding-bottom: 110px;
+}
+.back_option .glyphicon,.main_option1 .glyphicon{
+	color:#f27521;
+	
+}
+.back_option,.main_option1,.back1_option,.back2_option,.back3_option{
+	font-family: 'Roboto Thin', sans-serif;
+	font-size: 0.8em;
+	padding-bottom: 20px;
+	cursor: pointer;
+}
+.bac_option{
+	padding-bottom: 20px;
+}
+.pur2{
+padding:40px;
+}
+
+/*end*/
+@media(max-width:736px){
+	.sec_main_tab,.hei_third_B{
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+	.hei_third{
+		padding-right: 0px;
+		padding-left: 0px;
+		padding-bottom: 35px;
+	}
+	.hei_third_B h3{
+		padding-top: 30px !important;
+	}
+	.hei_forth h3{
+		 padding-bottom: 25px;
+		 padding-top: 0px;
+	}
+	#select_property .subhead h3 {
+    padding-top: 4px;
+    padding-bottom: 30px;
+	}
+	.btn_next {
+    padding-top: 33px;
+	}
+	#Purchase .btn_next{
+		padding-top: 0px;
+	}
+	
+	.mobi_txt{
+		width: 100%;
+     	float: left;
+	}
+	.xs_container .container{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.iphone_xs{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.hei_main {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+	}
+	.drop_padd_bottom img{
+		width:33px;
+	}
+	.drop_btn .btn{
+		    font: normal 1.3em 'Roboto Thin', sans-serif;
+	}
+	
+	.xs_resize_hu {
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+	}
+	.section_unit {
+    padding-bottom: 0px;
+	}
+	.ali_dev1,.ali_dev2{
+	padding-right: 0px;
+	padding-left: 0px;
+	text-align: center;
+	}
+	.subhead h2, .subhead h3{
+		font-size: 1.8em;
+    	font-family: 'Roboto Thin', sans-serif;
+    	/*font-weight: 0;*/
+    	line-height: 40px;
+	}
+	.hei_sec h3 {
+    padding-top: 0px !important;
+    padding-bottom: 40px !important;
+	}
+	.drop_padd_bottom {
+    padding-bottom: 50px;
+	}
+	.hei_third h3 {
+    padding-top: 0px !important;
+    padding-bottom: 13px !important;
+	}
+	#pro_loc_content .subhead{
+    padding: 20px 10px 40px 10px;
+	}
+	.range_create {
+    padding-bottom: 10px;
+	}
+}
+
+/*test*/
+.pur {
+        border:0px;
+        outline:0;
+        vertical-align:middle;
+    }
+/* Change Images Depending On Focus */
+	
+    .purchase {   
+    	background-image:url('../images/icn_home_purchase.png');  
+        background-repeat: no-repeat; 
+        background-position: center;
+        background-size: 65px;
+     }
+    .purchase:active, .selected{   
+    	background-image:url('../images/icn_home_purchased_white.png'); 
+    	background-repeat: no-repeat; 
+    	background-color:#f27521;
+		border-radius: 50%;
+		background-size: 65px;
+	}
+    .Refinance {  
+     background-image:url('../images/icn_refinance.png');  
+      background-repeat: no-repeat; 
+      background-position: center;
+          background-size: 65px;
+       }
+    .Refinance:active {   
+    	background-image:url('../images/Refinance_white1.png');
+    	background-repeat: no-repeat;  
+    	background-color:#f27521;
+		border-radius: 50%;  
+		background-size: 65px;
+		}
+		   
+	 .T_Case  {   
+	 	background-image:url('../images/icn_take_out_cash.png');  
+	 	background-repeat: no-repeat;
+	 	background-position: center;
+	 	 background-size: 65px; 
+	 	   }
+    .T_Case:active {  
+        background-image:url('../images/take_out_us_white1.png');
+    	background-repeat: no-repeat;  
+    	background-color:#f27521;
+		border-radius: 50%; 
+		background-size: 65px;  
+      }
+	.drop_padd_bottom select{
+		padding: 4px 0px 10px 0px;
+	    border-top: 0px;
+	    border-right: 0px;
+	    border-left: 0px;
+	    background-color: transparent;
+	    border-radius: 0;
+	    color: #848484 !important;
+	    font-family: 'Roboto Thin', sans-serif;
+    	font-style: italic;
+    	border-bottom: 1px solid #b6b6b6;
+	}
+
+	.zip_input .form-control{
+	    border-right: 0px;
+	    border-top: 0px;
+	    border-left: 0px;
+	    border-radius: 0;
+	    color: #848484;
+	    padding-left: 0px;
+	    -webkit-box-shadow: none;
+	    box-shadow: none;
+	    font-size: 1em;
+	        border-bottom: 1px solid #b6b6b6;
+	   font-family: 'Roboto Thin', sans-serif;
+	   font-style: italic;
+	    -webkit-transition: none,-webkit-box-shadow ease-in-out .15s;
+	    -o-transition:none,box-shadow ease-in-out .
+	}
+	.pur1{
+		    padding: 35px;
+	}
+	.range_digit label {
+		font-size: 1.5em ;
+		font-family: 'Roboto Thin', sans-serif;
+		font-weight:100; 
+		float:left;
+		 width:50px; 
+		 margin-top:10px;
+		 color: #1861a9;
+		}
+	.range_create label{
+		font-size:1.54em ;
+		font-family: 'Roboto Thin', sans-serif;
+		color: #1861a9;
+		font-weight: 100;
+	}
+
+	.drop_padd{
+		padding-left:0px;
+	}
+	/*range slider*/
+
+	.irs-slider{
+		top: 20px;
+	    width: 30px ;
+	    height: 30px ;
+	    border: 10px solid #a9c9e6;
+	    background: #DDD;
+	    background: #0c5497;
+	    border-radius: 27px;
+	}
+	.irs-bar {
+	    height: 2px !important;
+	    top: 33px;
+	    border-top: 1px solid #428bca;
+	    border-bottom: 1px solid #428bca;
+	    background: #428bca;
+	    background: linear-gradient(to top, rgba(66,139,202,1) 0%,rgba(127,195,232,1) 100%);
+	}
+	
+	.irs-single{
+    	display: none !important;
+    }
+    #slide_range span,#slide_per_range span{
+	font-size:1.2em;
+	font-family: robotoregular;
+	}
+    span#slide_range ,#slide_per_range {
+    text-align: center;
+    display: block;
+    font-size: 2em;
+    color:#1761a8;
+    font-family: robotoregular;
+	 }
+	 .irs-max,.irs-min{
+	 	visibility: visible !important;
+	 }
+
+
+*:focus {
+    outline: none;
+	}
+
+/* i phone 6 plus landscape */
+
+@media only screen and (min-width : 414px) and (max-width : 736px) and (orientation : landscape){
+	.purchase{
+		    background-size: 100px;
+	}
+	
+	.pur,.pur2 {
+    padding: 70px;
+	}
+	.mainTab{
+		padding-bottom: 20px;
+	}
+	.hei_sec h3 br{
+		display: none;
+	}
+	.subhead h2, .subhead h3{
+    	line-height: 40px;
+    	padding-top: 30px;
+
+	}
+	.pur1 {
+    padding: 70px;
+	}
+	.icn_unit1,.icn_condo,.icn_unit2,.icn_unit3,.icn_unit4,.Primary_re,.Vacation_h,.Investment_p{
+	background-size: 75px;
+	}
+	.xs_resize_hu1,.txt_unit2{
+		    text-align: left;
+	}
+	.xs_resize_hu0,.txt_unit1{
+ 			text-align: right;
+	}
+	.txt_unit2{
+		text-align: left;
+		padding-left: 48px;
+	}
+	.txt_unit1{
+		padding-right: 30px;
+	}
+	.hei_third,.hei_third_B,.line_wide{
+		    padding-left: 78px;
+    		padding-right: 78px;
+	}
+	.iphone_xs,#Purchase .btn_next, #pro_loc_content .subhead,.type_condo_tab,.mainTab,.sect_four{
+		    padding-left: 78px;
+    		padding-right: 78px;
+	}
+	.line_wide{
+			margin-left: 78px;
+    		margin-right: 78px;
+	}
+	.img_landscape_6_A{
+		    width: 6.666667%;
+	}
+	.img_landscape_6_B{
+		    width: 114%;
+	}
+	.drop_padd {
+    padding-left: 15px;
+	}
+	.icn_unit1, .icn_condo, .icn_unit2, .icn_unit3, .icn_unit4, .Primary_re, .Investment_p{
+		    background-size: 65px;
+
+	}
+	.Vacation_h{
+		background-size: 90px;
+	}
+	.first_cir {
+     padding-left: 0px; 
+	}
+	.last_cir{
+		padding-right: 0px; 
+	}
+	#pro_loc_content .subhead{
+		    padding: 0px 10px 40px 10px
+	}
+	.irs-slider {
+          top: 11px;
+	    width: 45px;
+	    height: 45px;
+	    border: 15px solid #a9c9e6;
+	    background: #DDD;
+	    background: #0c5497;
+	    border-radius: 27px;
+	    -moz-border-radius: 27px;
+	    cursor: pointer;
+	}
+	.irs-bar-edge{
+		    width: 25px;
+	}
+	.hei_forth h3,.type_condo_tab,.sect_four {
+    padding-top: 0px;
+	}
+	
+}
+/* i phone 6 plus portrait */
+
+@media screen and (min-width: 414px) and (max-width: 736px) and (orientation:portrait){
+
+	.mainTab{
+		padding-top: 20px;
+	}
+	.back_text h3{
+	    margin-top: 88px;
+    	margin-bottom: 80px;
+        font-size: 2em;
+	}
+	.pur2{
+		padding:50px;
+	}
+	.back_text .container{
+		height: 200px;
+	}
+	.xs_resize_hu{
+	width:33.33% !important;
+	 padding-bottom: 20px;
+	}
+	.xs_resize_hu0,.txt_unit1{
+		text-align: right !important;
+	}
+	
+	.xs_resize_hu1{
+		    text-align: left !important;
+	}
+	.txt_unit2{
+		    text-align: left;
+    		padding-left: 24px;
+	}
+	.txt_unit, .txt_unit1, .txt_unit2{
+		    font-size: 1.1em;
+	}
+	.Primary_re{
+		    background-size: 55px;
+	}
+	.pur {
+   	 padding: 50px;
+	}
+	.purchase,.Refinance,.T_Case{
+		 background-size: 75px;
+	}
+	.pur1 {
+    padding: 48px;
+	}
+	.back_option, .main_option1, .back1_option, .back2_option, .back3_option{
+		    font-size: 1em;
+		    color:#616161;
+	}
+	h2,h3{
+		font-family: robotoregular;
+	}
+	span#slide_range, #slide_per_range{
+		font-size: 1.8em; 
+		font-family: 'Roboto ', sans-serif;
+		font-weight: 100;
+	}
+	.irs-slider{
+		    top: 17px;
+    width: 35px;
+    height: 35px;
+	}
+	.irs-bar-edge{
+		width: 20px;
+	}
+	.subhead h2, .subhead h3{
+    	line-height: 40px;
+    	padding-top: 0px;
+
+	}
+	
+}
+
+/* i phone landscape */
+
+@media screen and (min-width:320px) and (max-width:480px) and (orientation : landscape) {
+	.back_text h3{
+		 margin-top: 95px;
+   		 margin-bottom: 90px;
+	}
+	.back_text .container{
+		    height: 215px;
+	}
+	.pur1 {
+    padding: 58px;
+	}
+	.pur {
+    padding: 60px;
+	}
+	.xs_resize_hu1,.txt_unit2{
+		    text-align: left;
+	}
+	.xs_resize_hu0,.txt_unit1{
+ 			text-align: right;
+	}
+
+	.txt_unit2{
+		text-align: left;
+		padding-left: 35px;
+	}
+
+}
+/* i phone portrait */
+
+@media screen and (max-width:320px) and (orientation : portrait) {
+.xs_resize_hu{
+	width:100%;
+	 padding-bottom: 20px;
+	}
+	.xs_resize_hu0new{
+		width: 100%;
+	}
+	.xs_resize_hu0{
+		margin-bottom: 10px;
+	}
+
+}
+/*iphone4s landscape*/
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+	.purchase, .Refinance, .T_Case {
+    	background-size: 50px;
+	}
+	.pur {
+    padding: 40px;
+	}
+	.pur2{
+		padding: 35px;
+	}
+	.Primary_re,.Investment_p{
+	background-size: 40px;
+	}
+	.Vacation_h{
+		background-size: 50px;
+	}
+	.txt_unit, .txt_unit1, .txt_unit2{
+		    font-size: 1em;
+	}
+	.subhead h2, .subhead h3{
+		font-size: 2em;
+	}
+	.pur1 {
+    padding: 35px;
+	}
+	.icn_unit1, .icn_condo, .icn_unit2, .icn_unit3, .icn_unit4{
+		background-size: 50px;
+	}
+	.back_text .container {
+        height: 100px;
+	}
+	.back_text h3 {
+       margin-top: 50px;
+    	margin-bottom: 45px;
+	}
+	.back_text h3,.subhead h2, .subhead h3{
+		    font-size: 1em;
+	}
+	.hei_main {
+    padding-top: 10px !important;
+    padding-bottom: 0px !important;
+	}
+	.hei_sec h3{
+		padding-bottom: 10px !important;
+	}
+	.txt_unit, .txt_unit1, .txt_unit2 {
+    font-size: 0.8em;
+	}
+	.txt_unit2{
+		    padding-left: 18px;
+	}
+	.mainTab {
+    padding-bottom: 40px;
+	}
+	.navbar-brand{
+		    height: 45px;
+		    padding: 10px 15px;
+	}
+	.navbar{
+		min-height: 0px;
+	}
+	.navbar-toggle{
+		padding: 5px 10px;
+	}
+	.hei_sec h3 br{
+		display: none;
+	}
+	.drop_padd_bottom {
+    padding-bottom: 30px;
+	}
+	.subhead {
+    padding: 10px 10px 40px 10px;
+    text-align: center;
+	}
+	.drop_padd_bottom img {
+    width: 25px;
+	}
+	.drop_padd_bottom select{
+		padding: 0px 0px 5px 0px;
+	}
+	.zip_input .form-control,.btn_next .btn-warning{
+		font-size: 1em;
+	}
+	#pro_loc_content .subhead {
+    padding: 0px 10px 40px 10px;
+	}
+	.hei_third h3 br{
+		display: none;
+	}
+	.subhead h2, .subhead h3{
+		    line-height: 20px;
+	}
+	.hei_third h3{
+		    padding-bottom: 0px !important;
+		    margin-bottom: 0px;
+	}
+	.range_create{
+    font-size:1em;
+	}
+	.range_digit label {
+		font-size:1em;
+		font-family: 'Roboto Thin', sans-serif;
+		font-weight:100; 
+		float:left;
+		 width:50px; 
+		 margin-top:10px;
+		 color: #1861a9;
+	}
+	.range_create label{
+		font-size:1em;
+		font-family: 'Roboto Thin', sans-serif;
+		color: #1861a9;
+		font-weight: 100;
+	}
+	.range_create {
+    padding-bottom: 0px;
+	}
+	.hei_third{
+		    padding-bottom: 20px;
+		}
+	.hei_third_B h3 {
+		 padding-top: 15px !important;
+	}
+	.hei_third_B h3{
+		    padding-bottom: 5px !important;
+	}
+	.irs-slider {
+	    top: 20px;
+	    width: 25px;
+	    height: 25px;
+	    border: 10px solid #a9c9e6;
+	    background: #DDD;
+	    background: #0c5497;
+	    border-radius: 27px;
+	}
+	.xs_resize_hu1{
+		padding-left: 0px;
+	}
+	.back_option, .main_option1, .back1_option, .back2_option, .back3_option {
+	    font-family: 'Roboto Thin', sans-serif;
+	    font-size: 0.5em;
+	    padding-bottom: 20px;
+	    cursor: pointer;
+	}
+	.back_option img, .main_option1 img, .back1_option img, .back2_option img, .back3_option img{
+		width: 10px;
+	}
+	.drop_padd_bottom select {
+    padding: 5px 0px 5px 0px;
+	}
+	.drop_padd_bottom select,.zip_input .form-control {
+		    font-size: 0.5em;
+	}
+	.btn_next .btn-warning{
+		 font-size: 0.8em;
+	}
+	.drop_padd_bottom img{
+		width: 20px;
+		    padding-top: 0px;
+	}
+	  .zip_input .form-control{
+	  	height: 20px;
+  	}  
+  	span#slide_range, #slide_per_range{
+  		font-size: 1.2em;
+  	}
+  	.irs-min,.irs-max{
+	font-size: 0.8em;
+  	}
+  	.txt_unit, .txt_unit1, .txt_unit2{
+  		font-size: 0.8em ;
+  	}
+  	.irs-min, .irs-max {
+   
+    top: 50px;
+    padding: 1px 5px;
+   
+}
+
+.drop_padd Select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: transparent url(../images/br_down_xs.png) no-repeat 60px center ;
+    border-bottom: 1px solid;
+    background-position: right;
+	}
+	
+}
+
+/*iphone4s portrait*/
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+	span#slide_range, #slide_per_range{
+		font-size: 1.4em;
+	}
+	.pur {
+    padding: 55px;
+	}
+	.back_text .container{
+		    height: 180px;
+	}
+	.back_text h3{
+		    margin-top: 80px;
+    		margin-bottom: 80px;
+    		font-size: 1.6em;
+	}
+	.pur2{
+		padding: 55px;
+	}
+	.Primary_re,.Vacation_h,.Investment_p{
+	background-size: 55px;
+	}
+	.pur1 {
+    padding: 55px;
+	}
+	.hei_third_B h3,.hei_third h3{
+		padding-bottom: 0px !important;
+	}
+	.icn_unit1,.icn_condo,.icn_unit2,.icn_unit3,.icn_unit4{
+		background-size: 55px;
+	}
+	.Vacation_h{
+		background-size: 78px;
+	}
+
+}
+
+/*moto g landscape*/
+
+@media screen and (device-width: 640px) and (device-height: 360px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+
+	.back_option, .main_option1, .back1_option, .back2_option, .back3_option {
+    font-size: 1em;
+    color: #616161;
+	}
+	.Primary_re,.Vacation_h,.Investment_p{
+   		 background-size: 55px;
+	}
+	.pur1 {
+	    padding: 58px;
+		}
+	.pur2 {
+    padding: 58px;
+	}
+	.back_text .container {
+    height: 170px;
+	}
+	.back_text h3{
+	margin-top: 80px;
+    margin-bottom: 100px;
+	}
+	.purchase, .Refinance, .T_Case {
+    background-size: 80px;
+	}
+	.pur {
+    padding: 60px;
+	}
+	.first_cir {
+    padding-left: 25px;
+	}
+	.last_cir {
+    padding-right: 25px;
+	}
+	.icn_unit1, .icn_condo, .icn_unit2, .icn_unit3, .icn_unit4,.Primary_re, .Vacation_h, .Investment_p {
+    background-size: 70px;
+	}
+	.xs_resize_hu0 {
+		padding-left:20px;
+	}
+	.xs_resize_hu01{
+	padding-left:20px;
+	}
+	.txt_unit2 {
+    padding-left: 44px;
+	}
+	.txt_unit1 {
+    padding-right: 25px;
+	}
+	.subhead{
+		    padding: 10px 10px 40px 10px;
+	}
+	.back_text h3, .subhead h2, .subhead h3{
+		font-size: 1.5em;
+		padding-top:20px;
+		padding-bottom: 20px;
+	}
+	span#slide_range, #slide_per_range, .irs-min, .irs-max{
+		font-size: 1.5em;
+	}
+	.hei_third {
+    padding-bottom: 80px;
+	}
+	.hei_third_B h3 {
+	    padding-bottom: 0px !important;
+	}
+	.hei_third_B h3{
+		margin-top: 20px;
+	}
+	.drop_padd_bottom select, .zip_input .form-control{
+		font-size: 0.8em;
+	}
+	.img_landscape_6_B {
+    width: 117%;
+	}
+	.btn_next .btn-warning {
+    font-size: 1em;
+	}
+	.irs-slider{
+		top: 17px;
+	    width: 35px;
+	    height: 35px;
+	    border: 12px solid #a9c9e6;
+
+	}
+	.irs-bar-edge{
+		    width: 18px;
+	}
+	
+	.type_condo_tab h3{
+		padding-top: 0px;
+		margin-bottom: 0px;
+	}
+	
+}
+
+/*moto g portrait*/
+
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 2){
+	.Primary_re,.Vacation_h,.Investment_p{
+	    background-size: 45px;
+	}
+	.pur2 {
+    padding: 45px;
+	}
+	.purchase, .Refinance, .T_Case {
+    background-size: 60px;
+	}
+	.pur {
+    padding: 45px;
+	}
+	.xs_resize_hu0{
+    text-align: right ;
+	}
+	.xs_resize_hu1{
+		text-align: left;
+	}
+	.txt_unit1{
+		padding-left:25px;
+	}
+	.txt_unit2{
+		padding-right:30px;
+	}
+	.pur1 {
+    padding: 45px;
+	}
+}
+
+
