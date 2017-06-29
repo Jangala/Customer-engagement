@@ -423,11 +423,26 @@
           e.preventDefault();
       }
     });
-    /*$('#zipcode').on('blur', function(e){
-      if(!$.isEmptyObject(mobile_data)){
-        alert("Hai");
+
+    $('#zipcode').on('blur', function(e){
+      if(!$.isEmptyObject(mobile_data) && $('#zipcode').val()!=""){
+          $.ajax({
+            url:        API_URL_PREFIX+'states/zipCode',
+            type:       'GET',
+            datatype:   'text',
+            data:       {zipCode: function(){return $('#zipcode').val();}},
+            success: function(data){ 
+                  if(data.resultObject=="Valid ZipCode"){
+                      $('.zipcode_error').css('display','none');
+                      $('.zipcode_mobile').prop("disabled", false);
+                  }else{
+                      $('.zipcode_error').css('display','block');                    
+                      $('.zipcode_mobile').prop("disabled", true);
+                  }                   
+            }
+        });
       }
-    });*/
+    });
    
 
    function closeTooltips() {
@@ -1929,7 +1944,6 @@
      // second middle continue content
    
    $(".sec_next_tab").click (function(){
-          alert("Zipcode Click");
           $("#pro_loc_content").addClass("active");
           $("#Purchase").removeClass("active");
           $(".sec_main_tab").attr("style","display:block");
@@ -1941,7 +1955,6 @@
    // third content continue content
 
    $(".third_next_tab").click (function(){
-           alert("Range Click");
            mobile_data.purchaseprice=$("#range_01").val();
            mobile_data.downpayment=$("#per_range").val();
           $("#property_content").addClass("active");
@@ -1953,7 +1966,6 @@
     // forth circle condo tab content
 
    $(".Condo_tab").click (function(){
-           alert("property Type Click");
           mobile_data.residencetype=$(this).data('property-type');
           $("#select_property").addClass("active");
           $("#property_content").removeClass("active");
@@ -1981,7 +1993,6 @@
       });
 
       $(".Residence_tab").click (function(){
-        alert("Residence_tab Type Click");
           mobile_data.propertyuse=$(this).data('residence-type');
           $("#select_property").addClass("active");
           $("#property_content").removeClass("active");

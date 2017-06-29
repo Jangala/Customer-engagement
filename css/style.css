@@ -1256,5 +1256,8 @@ padding:40px;
     padding: 45px;
 	}
 }
-
-
+.zipcode_error {
+    color: #ff0000;
+ 	margin-top:10px;
+	display:none;
+}
