@@ -283,7 +283,7 @@ font-size: 0.6em;
     background-position: center;
     background-size: 50px;
 }
-.icn_unit2:hover,.icn_unit2:focus{
+.icn_unit2:hover,.icn_unit2:focus,.icn_unit2_selected{
 	background-image: url('../images/icn_unit2_w.png') ;
     background-repeat: no-repeat;
     background-position: center;
@@ -297,7 +297,7 @@ font-size: 0.6em;
     background-position: center;
     background-size: 50px;
 }
-.icn_unit3:hover,.icn_unit3:focus{
+.icn_unit3:hover,.icn_unit3:focus,.icn_unit3_selected{
 	background-image: url('../images/icn_unit3_w.png') ;
     background-repeat: no-repeat;
     background-position: center;
@@ -311,7 +311,7 @@ font-size: 0.6em;
     background-position: center;
     background-size: 50px;
 }
-.icn_unit4:hover,.icn_unit4:focus{
+.icn_unit4:hover,.icn_unit4:focus,.icn_unit4_selected{
 	background-image: url('../images/icn_unit4_w.png') ;
     background-repeat: no-repeat;
     background-position: center;
@@ -437,8 +437,18 @@ padding-bottom: 110px;
 .pur2{
 padding:40px;
 }
-
+.desktop-view{
+		display:block !important;
+}
+.mobile-view{
+	display:none !important;
+}
+	
 /*end*/
+@media(max-width:960px){
+	.desktop-view{display:none !important;}
+	.mobile-view{display:block !important;}
+}
 @media(max-width:736px){
 	.sec_main_tab,.hei_third_B{
 		padding-right: 0px;
