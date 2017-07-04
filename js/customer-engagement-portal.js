@@ -5,9 +5,8 @@
 ;(function ($, window, document, undefined) {
   // Postpone execution until DOM is loaded
   $(function() {
-    //var API_URL_PREFIX = "../NewfiWeb/rest/";
-    var API_URL_PREFIX = "http://52.74.75.203:8080/NewfiWeb/rest/";
-   // var API_URL_PREFIX = "http://localhost:8080/NewfiWeb/rest/";
+    var API_URL_PREFIX = "../NewfiWeb/rest/";
+   // var API_URL_PREFIX = "http://52.74.75.203:8080/NewfiWeb/rest/";
     /**
      * Setup several app-wide collections:
      * 1. dict:
@@ -417,9 +416,22 @@
      
    }
 
-   $('#zipcode').on('keypress', function(e){
-      if (e.which < 48 || e.which > 57)
-      {
+   $('#zipcode').on('keydown', function(e){
+      // Allow: backspace, delete, tab, escape, enter and .
+      if ($.inArray(e.keyCode, [46, 8, 9, 27, 13]) !== -1 ||
+           // Allow: Ctrl/cmd+A
+          (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+           // Allow: Ctrl/cmd+C
+          (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+           // Allow: Ctrl/cmd+X
+          (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+           // Allow: home, end, left, right
+          (e.keyCode >= 35 && e.keyCode <= 39)) {
+               // let it happen, don't do anything
+               return;
+      }
+      // Ensure that it is a number and stop the keypress
+      if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
           e.preventDefault();
       }
     });
@@ -440,8 +452,8 @@
                       $('.zipcode_mobile').prop("disabled", true);
                   }                   
             }
-        });
-      }
+         });
+        }         
     });
    
 
@@ -933,14 +945,14 @@
            v = {
               residencetype:      mobile_data.residencetype,
               propertyuse:        mobile_data.propertyuse,
-              creditscore:       '740',
-              fha:                '',
+              creditscore:        mobile_data.creditscore,
+              fha:                mobile_data.fha,
               zipcode:            mobile_data.zipcode,
               purchaseprice:      mobile_data.purchaseprice,
               downpaymentpercent: mobile_data.downpayment,
-              estval:             accounting.unformat($('#estval').val()),
-              curmortgagebalance: accounting.unformat($('#curmortgagebalance').val()),
-              cashout:            accounting.unformat($('#cashout').val()),
+              estval:             accounting.unformat(mobile_data.estval),
+              curmortgagebalance: accounting.unformat(mobile_data.curmortgagebalance),
+              cashout:            accounting.unformat(mobile_data.cashout),
               curmortgagepayment: null, // see note above
             };
 
@@ -980,8 +992,8 @@
             'currentMortgagePayment': v.curmortgagepayment,
             'isIncludeTaxes':         null,
             'impounds':               'YES',
-            'propTaxMonthlyOryearly': 'Year',
-            'propInsMonthlyOryearly': 'Year',
+            //'propTaxMonthlyOryearly': 'Year',
+            //'propInsMonthlyOryearly': 'Year',
             'homeWorthToday':         v.estval,
             'propertyType':           v.residencetype,
             'residenceType':          v.propertyuse,
@@ -1002,8 +1014,8 @@
             'currentMortgagePayment': v.curmortgagepayment,
             'isIncludeTaxes':         null,
             'impounds':               'YES',
-            'propTaxMonthlyOryearly': 'Year',
-            'propInsMonthlyOryearly': 'Year',
+            //'propTaxMonthlyOryearly': 'Year',
+            //'propInsMonthlyOryearly': 'Year',
             'homeWorthToday':         v.estval,
             'propertyType':           v.residencetype,
             'residenceType':          v.propertyuse,
@@ -1201,7 +1213,7 @@
             }
           }
         }
-  	  });
+      });
     }
 
     /**
@@ -1283,15 +1295,15 @@
               'buyhomeZipPri':   cache.purchaseDetails.zipCode
             },
             "propertyTypeMaster": {
-          		'propertyTypeCd': cache.propertyType,
-          		'residenceTypeCd': cache.residenceType,
-          		'homeZipCode': cache.zipCode
-          	},
+              'propertyTypeCd': cache.propertyType,
+              'residenceTypeCd': cache.residenceType,
+              'homeZipCode': cache.zipCode
+            },
             'loanAmount':             cache.loanAmount,
             'user' : {
               'firstName': v.firstName,
-          		'lastName': v.lastName,
-          		'emailId': v.emailId
+              'lastName': v.lastName,
+              'emailId': v.emailId
             }
           };
           break;
@@ -1299,26 +1311,26 @@
         case 'refinance':
           return {
             'loanType':               {
-            		"loanTypeCd": "REF"
-            	},
+                "loanTypeCd": "REF"
+              },
               "refinancedetails": {
-            		"refinanceOption": "REFLMP",
-            		"currentMortgageBalance": cache.currentMortgageBalance,
-            		"includeTaxes": cache.isIncludeTaxes
-            	},
+                "refinanceOption": "REFLMP",
+                "currentMortgageBalance": cache.currentMortgageBalance,
+                "includeTaxes": cache.isIncludeTaxes
+              },
               "propertyTypeMaster": {
-            		"homeWorthToday": cache.homeWorthToday,
-            		"homeZipCode": cache.zipCode,
-            		"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
-            		"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
-            		"propertyTypeCd": cache.propertyType,
-            		"residenceTypeCd": cache.residenceType
-            	},
+                "homeWorthToday": cache.homeWorthToday,
+                "homeZipCode": cache.zipCode,
+                //"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
+                //"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
+                "propertyTypeCd": cache.propertyType,
+                "residenceTypeCd": cache.residenceType
+              },
             'loanAmount': cache.loanAmount,
             'user' : {
               'firstName': v.firstName,
-          		'lastName': v.lastName,
-          		'emailId': v.emailId
+              'lastName': v.lastName,
+              'emailId': v.emailId
             }
           };
           break;
@@ -1326,27 +1338,27 @@
         case 'cashout':
           return {
             'loanType':               {
-            		"loanTypeCd": "REF"
-            	},
+                "loanTypeCd": "REF"
+              },
               "refinancedetails": {
-            		"refinanceOption": "REFCO",
+                "refinanceOption": "REFCO",
                 "cashTakeOut": cache.cashTakeOut,
-            		"currentMortgageBalance": cache.currentMortgageBalance,
-            		"includeTaxes": cache.isIncludeTaxes
-            	},
+                "currentMortgageBalance": cache.currentMortgageBalance,
+                "includeTaxes": cache.isIncludeTaxes
+              },
               "propertyTypeMaster": {
-            		"homeWorthToday": cache.homeWorthToday,
-            		"homeZipCode": cache.zipCode,
-            		"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
-            		"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
-            		"propertyTypeCd": cache.propertyType,
-            		"residenceTypeCd": cache.residenceType
-            	},
+                "homeWorthToday": cache.homeWorthToday,
+                "homeZipCode": cache.zipCode,
+                //"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
+                //"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
+                "propertyTypeCd": cache.propertyType,
+                "residenceTypeCd": cache.residenceType
+              },
             'loanAmount': cache.loanAmount,
             'user' : {
               'firstName': v.firstName,
-          		'lastName': v.lastName,
-          		'emailId': v.emailId
+              'lastName': v.lastName,
+              'emailId': v.emailId
             }
           };
           break;
@@ -1861,8 +1873,9 @@
       // Add index properties to programs and rates, to be used in templates
       return {'programs': programs};
     }
-	   // Nav collaps in xs
-   
+    
+   // Nav collaps in xs
+
     $('.navbar-collapse a').click(function(){
     $(".navbar-collapse").collapse('hide');
     });
@@ -1876,177 +1889,308 @@
     // tab content hide and show
     var mobile_data={};
     $(".tabPurchase").click (function(){
+        $(".purchase").addClass("selected"); // active 
+        $(".Refinance").removeClass("refin_selected");// remove active
+        $(".T_Case").removeClass("T_Case_selected");// remove active
+
         $("#Purchase").addClass("active");
         $("#Refinance").removeClass("active");
         $("#Take_Case").removeClass("active");
-        $(".purchase").addClass("selected");
         $(".mainTab").attr("style","display:none");
         $('.sec_main_tab').css('display','block');
         state.chosen_loan_type="new-purchase";  
-        mobile_data.chosen_loan_type="new-purchase";      
-        console.log(state);
-		});
+        mobile_data.chosen_loan_type="new-purchase";   
+        getstates();   
+    });
+
+    //Get states list
+    function getstates(){
+        $.ajax({
+            url:        API_URL_PREFIX+'states/stateList',
+            type:       'GET',
+            datatype:   'json',
+            success: function(data){ 
+                var jsonstates=data.resultObject;
+                $('#mobile_states').find('option').remove().end();
+                $('#mobile_states').append($('<option>').text('Please Select State').attr('value',''));
+                $.each(jsonstates, function(i, value) {
+                    $('#mobile_states').append($('<option>').text(value.stateName).attr('value', value.id));
+                });
+              }
+         });
+
+    }
+    //Get countycode for particular state
+    $("#mobile_states").change(function(){
+      $.ajax({
+            url:        API_URL_PREFIX+'states/countyListByStateCode?stateId='+$(this).val(),
+            type:       'GET',
+            datatype:   'json',
+            success: function(data){ 
+                var jsonstates=data.resultObject;                
+                $('#mobile_counties').find('option').remove().end();
+                $('#mobile_counties').append($('<option>').text('Please Select County').attr('value',''));
+                $.each(jsonstates, function(i, value) {
+                   if(value.countyName!="")
+                    $('#mobile_counties').append($('<option>').text(value.countyName).attr('value', value.countyName));
+                });
+              }
+         });
+
+    });
+    
+    //get Zipcode for county/state
+
+    $("#mobile_counties").change(function(){
+           $.ajax({
+            url:        API_URL_PREFIX+'states/zipCodesForStateCounty?stateId='+$("#mobile_states option:selected").val()+'&countyName='+$("#mobile_counties option:selected").val(),
+            type:       'GET',
+            datatype:   'json',
+            success: function(data){ 
+                  console.log(data);  
+                  $('#zipcode1').val(data.resultObject[0].zipcode);
+                  $('.zipcode_mobile').prop("disabled", false);
+              },
+              error:function(error){
+                  $('.zipcode_mobile').prop("disabled", true);
+              }
+         });
+
+    });
+
 
     $(".tabRefinance").click (function(){
-        $("#Purchase").removeClass("active");
+        $(".purchase").removeClass("selected"); // active 
+        $(".Refinance").addClass("refin_selected");// remove active
+        $(".T_Case").removeClass("T_Case_selected");// remove active
+
+        $("#Purchase").addClass("active");
         $("#Refinance").addClass("active");
         $("#Take_Case").removeClass("active");
         $(".mainTab").attr("style","display:none");
+        $('.sec_main_tab').css('display','block');
+        state.chosen_loan_type="refinance";  
+        mobile_data.chosen_loan_type="refinance";      
+        getstates();       
     });
 
     $(".tabT_Case").click (function(){
-        $("#Purchase").removeClass("active");
+        $(".purchase").removeClass("selected"); // remove active 
+        $(".Refinance").removeClass("refin_selected"); // remove active  
+        $(".T_Case").addClass("T_Case_selected"); //active 
+
+        $("#Purchase").addClass("active");
         $("#Refinance").removeClass("active");
         $("#Take_Case").addClass("active");
         $(".mainTab").attr("style","display:none");
+        $('.sec_main_tab').css('display','block');
+        state.chosen_loan_type="cashout";  
+        mobile_data.chosen_loan_type="cashout";      
+        getstates();
+
     });
 
-    $(".back_option").click( function(){
-        mobile_data={};
-        state.chosen_loan_type=""; 
-        $('#mobile_form')[0].reset();        
-        $('.c-page-content__section').css('display', 'none');
-        $('.mobile_rates-listing').css('display', 'none');
-        $('.u-margin-bottom-large').css('display', 'none');
-        $(".mainTab").removeAttr("style","display:none");
-        $("#Purchase").removeClass("active");
-        $("#Refinance").removeClass("active");
-        $("#Take_Case").removeClass("active");
-        $(".purchase").removeClass("selected");
-    })
-
-    $(".main_option1").click( function(){
-        mobile_data={};
-        state.chosen_loan_type=""; 
-        $('#mobile_form')[0].reset();        
-        $('.c-page-content__section').css('display', 'none');
-        $('.mobile_rates-listing').css('display', 'none');
-        $('.u-margin-bottom-large').css('display', 'none');
-        $(".mainTab").removeAttr("style","display:none");
-        $("#Purchase").removeClass("active");
-        $("#Refinance").removeClass("active");
-        $("#Take_Case").removeClass("active");
-        $(".purchase").removeClass("selected");
-        $("#pro_loc_content").removeClass("active");
-        $("#property_content").removeClass("active");
-        $("#select_property").removeClass("active");
-        $('.step-3').removeAttr("style","display:none");
-        $('.step-2').removeAttr("style","display:none");
-        $("#property_content .pur1.icn_unit1").removeClass("icn_unit1_selected");
-        $("#property_content .pur1.icn_condo").removeClass("icn_condo_selected");
-        $("#property_content .pur1.icn_unit2").removeClass("icn_unit2_selected");
-        $("#property_content .pur1.icn_unit3").removeClass("icn_unit3_selected");
-        $("#property_content .pur1.icn_unit4").removeClass("icn_unit4_selected");
-        $("#range_01").data("ionRangeSlider").reset();
-        $("#per_range").data("ionRangeSlider").reset();
-    })
-
-     // second middle continue content
-   
+  // next step code start
+  
    $(".sec_next_tab").click (function(){
-          $("#pro_loc_content").addClass("active");
+          $("#property_content").addClass("active");
           $("#Purchase").removeClass("active");
           $(".sec_main_tab").attr("style","display:block");
           $('.step-1').removeAttr("style","display:none");
-          mobile_data.zipcode=$("#zipcode").val();
-
+          if($("#zipcode1").val()==""){
+            mobile_data.zipcode=$("#zipcode").val();
+          }else{
+             mobile_data.zipcode=$("#zipcode1").val();
+          }        
       });
-
-   // third content continue content
-
-   $(".third_next_tab").click (function(){
-           mobile_data.purchaseprice=$("#range_01").val();
-           mobile_data.downpayment=$("#per_range").val();
-          $("#property_content").addClass("active");
-          $("#pro_loc_content").removeClass("active");
-          $(".third_main_tab").attr("style","display:block");
-          $('.step-2').removeAttr("style","display:none");
-      });
-
-    // forth circle condo tab content
 
    $(".Condo_tab").click (function(){
+          $(".third_next_tab").removeClass("selectedTab");
           mobile_data.residencetype=$(this).data('property-type');
+          $(".Condo_tab").removeClass("selectedTab");
           $("#select_property").addClass("active");
           $("#property_content").removeClass("active");
-          $(".select_property").attr("style","display:block");
-          
-          switch($(this).data('property-type')){
-            case 0:
-              $("#property_content .pur1.icn_unit1").addClass("icn_unit1_selected");
-              break;
-            case 1:
-              $("#property_content .pur1.icn_condo").addClass("icn_condo_selected");
-               break;
-            case 2:
-              $("#property_content .pur1.icn_unit2").addClass("icn_unit2_selected");
-               break;
-            case 3:
-              $("#property_content .pur1.icn_unit3").addClass("icn_unit3_selected");
-               break;
-            case 4:
-              $("#property_content .pur1.icn_unit4").addClass("icn_unit4_selected");
-               break;
-          }
-          $(".type_condo_tab").attr("style","display:block");
-          $('.step-3').removeAttr("style","display:none");
+          $(".third_main_tab").attr("style","display:block");
+          $('.step-2').removeAttr("style","display:none");
+          $(".third_next_tab").removeClass("selectedTab");
+          $(this).addClass("selectedTab");
       });
 
-      $(".Residence_tab").click (function(){
+  $(".Residence_tab").click (function(){
           mobile_data.propertyuse=$(this).data('residence-type');
-          $("#select_property").addClass("active");
-          $("#property_content").removeClass("active");
-          $(".select_property").attr("style","display:none");  
-          console.log(mobile_data);      
-          submitLoanDetailsForm();         
-      });
+          $(".Residence_tab").removeClass("selectedTab");
+          $("#cradit_score").addClass("active");
+          $("#select_property").removeClass("active");
+          $(".forth_next_tab").attr("style","display:block");
+          $('.step-3').removeAttr("style","display:none");
+          $(".forth_next_tab").removeClass("selectedTab");
+          $(this).addClass("selectedTab");
+    });
 
+
+   $(".fifth_next_tab").click (function(){
+      switch($("#credit_score_slider").val()){
+            case "1":              
+                mobile_data.creditscore="740";
+              break;
+            case "2":
+               mobile_data.creditscore="720";
+               break;
+            case "3":
+               mobile_data.creditscore="700";
+               break;
+            case "4":
+               mobile_data.creditscore="680";
+               break;
+            case "5":
+               mobile_data.creditscore="660";
+               break;
+            case "6":
+               mobile_data.creditscore="640";
+               break;              
+          }
+        switch(mobile_data.chosen_loan_type){
+          case "new-purchase":  
+            $("#pro_loc_content").addClass("active");
+            $("#cradit_score").removeClass("active");
+            $(".fifth_next_tab").attr("style","display:block");
+            $('.step-4').removeAttr("style","display:none");
+            break;
+          case "refinance":
+            $("#pro_loc_content_refinance").addClass("active");
+            $("#cradit_score").removeClass("active");
+            $(".fifth_next_tab").attr("style","display:block");
+            $('.step-4').removeAttr("style","display:none");
+            break;
+          case "cashout":
+            $("#pro_loc_content_cashout").addClass("active");
+            $("#cradit_score").removeClass("active");
+            $(".fifth_next_tab").attr("style","display:block");
+            $('.step-4').removeAttr("style","display:none");
+            break;
+        }  
+         
+       
+      });
+    
+   // next step code end 
+     $(".loan-options").click (function(){  
+        switch(mobile_data.chosen_loan_type){
+          case "new-purchase":    
+              mobile_data.purchaseprice=$("#range_01").val();
+              mobile_data.downpayment=$("#per_range").val();
+              $(".pro_loc_content").attr("style","display:none"); 
+              $(".third_main_tab").attr("style","display:none"); 
+              $(".back4_option").attr("style","display:none"); 
+              break;
+           case "refinance":
+              mobile_data.purchaseprice=0;
+              mobile_data.downpayment=0;
+              mobile_data.estval=$("#range_02").val();
+              mobile_data.curmortgagebalance=$("#range_03").val();;
+              mobile_data.fha=$("#fha").val();
+              $(".pro_loc_content_refinance").attr("style","display:none"); 
+              $(".third_main_tab").attr("style","display:none"); 
+              $(".back4_option").attr("style","display:none"); 
+           break;  
+           case "cashout":
+              mobile_data.purchaseprice=0;
+              mobile_data.downpayment=0;
+              mobile_data.estval=$("#range_04").val();
+              mobile_data.curmortgagebalance=$("#range_05").val();
+              mobile_data.fha="";
+              mobile_data.cashout=$("#range_06").val();
+              $(".pro_loc_content_cashout").attr("style","display:none"); 
+              $(".third_main_tab").attr("style","display:none"); 
+              $(".back4_option").attr("style","display:none"); 
+           break;     
+         }
+         console.log(mobile_data);
+        submitLoanDetailsForm(); 
+     });
       // one-step back code
+    $(".main_option1").click( function(){
+        mobile_data={};
+        state.chosen_loan_type=""; 
+        $('#mobile_form')[0].reset();    
+        $('.zipcode_mobile').prop("disabled", true);
+        $(".purchase").removeClass("selected");
+        $(".T_Case").removeClass("selected");
+        $(".Residence_tab").removeClass("selectedTab");    
+        $('.c-page-content__section').css('display', 'none');
+        $('.mobile_rates-listing').css('display', 'none');
+        $('.u-margin-bottom-large').css('display', 'none');
+        $(".mainTab").removeClass("selected");
+        $(".mainTab").removeAttr("style","display:none");
+        $(".mainTab").removeAttr("style","display:none");
+        $("#Purchase").removeClass("active");
+        $("#Refinance").removeClass("active");
+        $(".Refinance").removeClass("refin_selected");
+        $(".T_Case").removeClass("T_Case_selected");         
+        $("#Take_Case").removeClass("active");
+        $("#cradit_score").removeClass("active");
+        $("#pro_loc_content").removeClass("active");
+        $("#pro_loc_content_refinance").removeClass("active");
+        $("#pro_loc_content_cashout").removeClass("active");
+        $("#property_content").removeClass("active");
+        $("#select_property").removeClass("active");
+        $(".Condo_tab").removeClass("selectedTab");
+        $('.step-4').removeAttr("style","display:none");
+        $('.step-3').removeAttr("style","display:none");
+        $('.step-2').removeAttr("style","display:none");
+        $('#zipcode1').val("");
+        $("#range_01").data("ionRangeSlider").reset();
+        $("#range_02").data("ionRangeSlider").reset();
+        $("#range_03").data("ionRangeSlider").reset();
+        $("#range_04").data("ionRangeSlider").reset();
+        $("#range_05").data("ionRangeSlider").reset();
+        $("#range_06").data("ionRangeSlider").reset();
+        $("#per_range").data("ionRangeSlider").reset();
+        $("#credit_score_slider").data("ionRangeSlider").reset();          
+        crediScoreSlider();    
+    });
+ 
+   $(".back_option").click( function(){
+        $(".mainTab").removeAttr("style","display:none");
+        $("#Purchase").removeClass("active");
+        $("#Refinance").removeClass("active");
+        $("#Take_Case").removeClass("active");       
+        $(".Refinance").removeClass("refin_selected");
+        $(".T_Case").removeClass("T_Case_selected");
+        $(this).closest('.subhead').removeClass('active');
+        $(this).closest('.subhead').css('display','none');
+    });
 
      $(".back1_option").click( function(){
       $(this).closest('.subhead').removeClass('active');
       $(this).closest('.subhead').css('display','none');
       $('.subhead.step-1 .sec_main_tab').css('display','block');
       $('.subhead.step-1').css('display','block');
-      })
-     $(".back_option").click( function(){
-      $(this).closest('.subhead').removeClass('active');
-      $(this).closest('.subhead').css('display','none');
-     
-      $('.mainTab').css('display','block');
-      })
-
-
-      $(".back2_option").click( function(){
+      });
+    
+  $(".back2_option").click( function(){
       $(this).closest('.subhead').removeClass('active');
       $(this).closest('.subhead').css('display','none');
       $('.subhead.step-2 .third_main_tab').css('display','block');
       $('.subhead.step-2').css('display','block');
-      })
-     $(".back_option").click( function(){
-      $(this).closest('.subhead').removeClass('active');
-      $(this).closest('.subhead').css('display','none');
-
-      $('.mainTab').css('display','block');
-
       });
 
-
-    $(".back3_option").click( function(){
+      $(".back3_option").click( function(){
       $(this).closest('.subhead').removeClass('active');
       $(this).closest('.subhead').css('display','none');
-      $('.subhead.step-3 .type_condo_tab').css('display','block');
+      $('.subhead.step-3 .forth_main_tab').css('display','block');
       $('.subhead.step-3').css('display','block');
-      })
-     $(".back_option").click( function(){
+      });
+
+    $(".back4_option").click( function(){
       $(this).closest('.subhead').removeClass('active');
       $(this).closest('.subhead').css('display','none');
-     
-      $('.mainTab').css('display','block');
-      })
-  
-  $('.sec_next_tab').click (function () {
-        $("#range_01").ionRangeSlider({
+      $('.subhead.step-4 .fifth_next_tab').css('display','block');
+      $('.subhead.step-4').css('display','block');
+      });
+//form Range slider
+function createRangeSliders(sliderId,spanId,classId){
+  $("#"+sliderId).ionRangeSlider({
         type: "single",
         min: 0,
         max: 2000000,
@@ -2057,206 +2201,332 @@
         max_postfix: 'M+',
        
         onStart: function (data) {
-            var current_val = data.min;
-            var dis_min_val =  parseInt(current_val) + 10001;
-            var dis_max_val = parseInt(dis_min_val) + 10000 -1 ;
-          
-           var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-            console.log(current_val,dis_max_val);
-            $('#slide_range').html(slide_range);
-            $('.range_slider .irs-max').text('$2M+');
+          var current_val = data.from;
+            var dis_min_val =  parseInt(current_val);
+            var slide_range = '$' + dis_min_val;
+            $('#'+spanId).html(slide_range);
+            $('.'+classId+' .irs-max').text('$2M+');
+      if(slide_range == "Over $2 million") {p_price = "$2000000"}else{p_price = slide_range};
+      est_amt = parseInt(p_price.toString().substring(1,p_price.length)) *  per / 100;
+            var slide_range = per + '% ($'+ est_amt +')' ;
+           // $('#slide_per_range').html(slide_range);
         },
         onChange: function (data) {
            var current_val = data.from;
-            var dis_min_val = 0;
-            var dis_max_val = 0 ;
-            var step = 25000;
-           console.log(data);
-           if(current_val == 0){
-                         dis_min_val = 1;
-                  dis_max_val = 10000+1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
+       var dis_min_val =  parseInt(current_val);
+           var slide_range = '$' + dis_min_val;
+           if(current_val < 2000000){
+             $('#'+spanId).html(slide_range);
            }
-           if((current_val < 100000)  && (current_val > 1)){
-                  dis_min_val = parseInt(current_val) + 10001;
-                  dis_max_val = parseInt(dis_min_val) + 10000 -1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if(current_val == 100000) {
-                  dis_min_val = 100001;
-                  dis_max_val = parseInt(dis_min_val) + 10000 -1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if((current_val <= 200000 ) && (current_val > 100001)){
-
-                  dis_min_val = parseInt(current_val) - step + 20001;
-                  dis_max_val = parseInt(dis_min_val) + 20000 -1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           
-           }
-           if(current_val > 200001){
-
-                  dis_min_val = parseInt(current_val) - step + 50001;
-                  dis_max_val = parseInt(dis_min_val) + 50000 -1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if(current_val == 2000000){
+            if(current_val == 2000000){
                   var slide_range = 'Over $2 million';
-                  
            }
-            $('#slide_range').html(slide_range);
-            $('.range_slider .irs-max').text('$2M+');
+            $('#'+spanId).html(slide_range);
+            $('.'+classId+' .irs-max').text('$2M+');
+      if(slide_range == "Over $2 million") {p_price = "$2000000"}else{p_price = slide_range};
+      per = $("#slide_per_range").text().split("%")[0];
+      est_amt = parseInt(p_price.toString().substring(1,p_price.length)) *  per / 100;
+            var slide_range = per + '% ($'+ est_amt +')' ;
+           // $('#slide_per_range').html(slide_range);
+        },
+    onUpdate: function (data) {
+       var current_val = data.from;
+       var dis_min_val =  parseInt(current_val);
+           var slide_range = '$' + dis_min_val;
+           if(current_val < 2000000){
+             $('#'+spanId).html(slide_range);
+           }
+            if(current_val == 2000000){
+                  var slide_range = 'Over $2 million';
+           }
+            $('#'+spanId).html(slide_range);
+            $('.'+classId+' .irs-max').text('$2M+');
+      if(slide_range == "Over $2 million") {p_price = "$2000000"}else{p_price = slide_range};
+      per = $("#slide_per_range").text().split("%")[0];
+      est_amt = parseInt(p_price.toString().substring(1,p_price.length)) *  per / 100;
+            var slide_range = per + '% ($'+ est_amt +')' ;
+           // $('#slide_per_range').html(slide_range);
+    },
+    onFinish: function (data) {
+       var current_val = data.from;
+       var dis_min_val =  parseInt(current_val);
+           var slide_range = '$' + dis_min_val;
+           if(current_val < 2000000){
+             $('#'+spanId).html(slide_range);
+           }
+            if(current_val == 2000000){
+                  var slide_range = 'Over $2 million';
+           }
+            $('#'+spanId).html(slide_range);
+            $('.'+classId+' .irs-max').text('$2M+');
+      if(slide_range == "Over $2 million") {p_price = "$2000000"}else{p_price = slide_range};
+      per = $("#slide_per_range").text().split("%")[0];
+      est_amt = parseInt(p_price.toString().substring(1,p_price.length)) *  per / 100;
+            var slide_range = per + '% ($'+ est_amt +')' ;
+           // $('#slide_per_range').html(slide_range);
+    }
+    });
+  $('.'+classId+' .irs-max').text('$2M+');
+}
+
+// Range slider code
+$('.forth_next_tab').click (function(){
+  crediScoreSlider();
+});
+
+  var crediScoreSlider = function () {
+  $("#credit_score_slider").ionRangeSlider({
+        type: "single",
+        min: 1,
+        max: 6,
+        keyboard: true,
+        step: 1,
+        onStart: function (data) {
+            var current_val = data.from;
+      var slide_range = "740+ — Excellent";
+            $('#slide_range_credit').html(slide_range); 
+      $('.range_slider2 .irs-min').text("Excellent"); 
+      $('.range_slider2 .irs-max').text("Fair"); 
+        },
+        onChange: function (data) {
+      var current_val = data.from;
+      var slide_range = "";
+      $('#slide_range_credit').html(slide_range); 
+      $('.range_slider2 .irs-min').text("Excellent"); 
+      $('.range_slider2 .irs-max').text("Fair"); 
+      if(current_val == 1){
+                slide_range = "740+ - Excellent";
+            }
+      else if(current_val == 2){
+                slide_range = "720-739 - Great";
+            }
+      else if(current_val == 3){
+                slide_range = "700-719 - Very Good";
+            }
+      else if(current_val == 4){
+                slide_range = "680-699 - Good";
+            }
+      else if(current_val == 5){
+                slide_range = "660-679 - Average";
+            }
+      else if(current_val == 6){
+                slide_range = "640-659 - Fair";
+            }else{}
+            $('.range_slider2 .irs-min').text("Excellent"); 
+      $('.range_slider2 .irs-max').text("Fair");          
+      $('#slide_range_credit').html(slide_range); 
         },
         onFinish: function (data) {
            var current_val = data.from;
-            var dis_min_val = 0;
-            var dis_max_val = 0 ;
-            var step = 25000;
-
-           if(current_val == 0){
-                         dis_min_val = 1;
-                  dis_max_val = 10000+1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if((current_val < 100000)  && (current_val > 1)){
-                  dis_min_val = parseInt(current_val) + 10001;
-                  dis_max_val = parseInt(dis_min_val) + 10000 -1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if(current_val == 100000) {
-                  dis_min_val = 100001;
-                  dis_max_val = parseInt(dis_min_val) + 10000 -1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if((current_val <= 200000 ) && (current_val > 100001)){
-                  dis_min_val = parseInt(current_val) - step + 20001;
-                  dis_max_val = parseInt(dis_min_val) + 20000 -1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if(current_val > 200001){
-                  dis_min_val = parseInt(current_val) - step + 50001;
-                  dis_max_val = parseInt(dis_min_val) + 50000 -1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if(current_val == 2000000){
-                  var slide_range = 'Over $2 million';
-           }
-            $('#slide_range').html(slide_range);
-            $('.range_slider .irs-max').text('$2M+');
+      var slide_range = "";
+      $('#slide_range_credit').html(slide_range); 
+      $('.range_slider2 .irs-min').text("Excellent"); 
+      $('.range_slider2 .irs-max').text("Fair"); 
+      if(current_val == 1){
+                slide_range = "740+ — Excellent";
+            }
+      else if(current_val == 2){
+                slide_range = "720-739 — Great";
+            }
+      else if(current_val == 3){
+                slide_range = "700-719 — Very Good";
+            }
+      else if(current_val == 4){
+                slide_range = "680-699 — Good";
+            }
+      else if(current_val == 5){
+                slide_range = "660-679 — Average";
+            }
+      else if(current_val == 6){
+                slide_range = "640-659 — Fair";
+            }else{}
+            $('.range_slider2 .irs-min').text("Excellent"); 
+      $('.range_slider2 .irs-max').text("Fair");          
+      $('#slide_range_credit').html(slide_range); 
         },
         onUpdate: function (data) {
             var current_val = data.from;
-            var dis_min_val = 0;
-            var dis_max_val = 0 ;
-            var step = 25000;
-           console.log(data);
-           if(current_val == 0){
-                         dis_min_val = 1;
-                  dis_max_val = 10000+1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if((current_val < 100000)  && (current_val > 1)){
-                  dis_min_val = parseInt(current_val) + 10001;
-                  dis_max_val = parseInt(dis_min_val) + 10000 -1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if(current_val == 100000) {
-                  dis_min_val = 100001;
-                  dis_max_val = parseInt(dis_min_val) + 10000 -1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if((current_val <= 200000 ) && (current_val > 100001)){
-
-                  dis_min_val = parseInt(current_val) - step + 20001;
-                  dis_max_val = parseInt(dis_min_val) + 20000 -1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if(current_val > 200001){
-
-                  dis_min_val = parseInt(current_val) - step + 50001;
-                  dis_max_val = parseInt(dis_min_val) + 50000 -1;
-                  var slide_range = '$' + dis_min_val + '<span> to </span>' + '$' + dis_max_val;
-           }
-           if(current_val == 2000000){
-                  var slide_range = 'Over $2 million';
-           }
-           $('#slide_per_range').html(slide_range);
-            $('.range_slider .irs-max').text('$2M+');
+      var slide_range = "";
+      $('#slide_range_credit').html(slide_range); 
+      $('.range_slider2 .irs-min').text("Excellent"); 
+      $('.range_slider2 .irs-max').text("Fair"); 
+      if(current_val == 1){
+                slide_range = "740+ — Excellent";
+            }
+      else if(current_val == 2){
+                slide_range = "720-739 — Great";
+            }
+      else if(current_val == 3){
+                slide_range = "700-719 — Very Good";
+            }
+      else if(current_val == 4){
+                slide_range = "680-699 — Good";
+            }
+      else if(current_val == 5){
+                slide_range = "660-679 — Average";
+            }
+      else if(current_val == 6){
+                slide_range = "640-659 — Fair";
+            }else{}
+            $('.range_slider2 .irs-min').text("Excellent"); 
+      $('.range_slider2 .irs-max').text("Fair");          
+      $('#slide_range_credit').html(slide_range); 
         }
-    });
-    $('.range_slider .irs-max').text('$2M+');
-
-    $("#per_range").ionRangeSlider({
+  });
+  $('.range_slider2 .irs-min').text("Excellent"); 
+  $('.range_slider2 .irs-max').text("Fair"); 
+  }
+var est_amt = 0, p_price, per = 20;
+  $('.fifth_next_tab').click (function () {
+    $("#range_01").ionRangeSlider({
         type: "single",
         min: 0,
-        max: 90,
-        from: 30,
+        max: 2000000,
+        from: 10000,
         keyboard: true,
-       // prefix:'%',
-        step: 10,
-        max_postfix: '%',
+        prefix:'$ ',
+        step: 25000,
+        max_postfix: 'M+',
        
         onStart: function (data) {
-            var current_val = data.from;
-            var dis_min_val =  parseInt(current_val) + 1 ;
-            var dis_max_val = parseInt(dis_min_val) + 10 -1 ;
-          
-            var slide_range = dis_min_val + '%' + ' <span> to </span> ' + dis_max_val + '%';
+          var current_val = data.from;
+            var dis_min_val =  parseInt(current_val);
+            var slide_range = '$' + dis_min_val;
+            $('#slide_range').html(slide_range);
+            $('.range_slider .irs-max').text('$2M+');
+      if(slide_range == "Over $2 million") {p_price = "$2000000"}else{p_price = slide_range};
+      est_amt = parseInt(p_price.toString().substring(1,p_price.length)) *  per / 100;
+            var slide_range = per + '% ($'+ est_amt +')' ;
             $('#slide_per_range').html(slide_range);
         },
         onChange: function (data) {
-        var current_val = data.from;
+           var current_val = data.from;
+       var dis_min_val =  parseInt(current_val);
+           var slide_range = '$' + dis_min_val;
+           if(current_val < 2000000){
+             $('#slide_range').html(slide_range);
+           }
+            if(current_val == 2000000){
+                  var slide_range = 'Over $2 million';
+           }
+            $('#slide_range').html(slide_range);
+            $('.range_slider .irs-max').text('$2M+');
+      if(slide_range == "Over $2 million") {p_price = "$2000000"}else{p_price = slide_range};
+      per = $("#slide_per_range").text().split("%")[0];
+      est_amt = parseInt(p_price.toString().substring(1,p_price.length)) *  per / 100;
+            var slide_range = per + '% ($'+ est_amt +')' ;
+            $('#slide_per_range').html(slide_range);
+        },
+    onUpdate: function (data) {
+       var current_val = data.from;
+       var dis_min_val =  parseInt(current_val);
+           var slide_range = '$' + dis_min_val;
+           if(current_val < 2000000){
+             $('#slide_range').html(slide_range);
+           }
+            if(current_val == 2000000){
+                  var slide_range = 'Over $2 million';
+           }
+            $('#slide_range').html(slide_range);
+            $('.range_slider .irs-max').text('$2M+');
+      if(slide_range == "Over $2 million") {p_price = "$2000000"}else{p_price = slide_range};
+      per = $("#slide_per_range").text().split("%")[0];
+      est_amt = parseInt(p_price.toString().substring(1,p_price.length)) *  per / 100;
+            var slide_range = per + '% ($'+ est_amt +')' ;
+            $('#slide_per_range').html(slide_range);
+    },
+    onFinish: function (data) {
+       var current_val = data.from;
+       var dis_min_val =  parseInt(current_val);
+           var slide_range = '$' + dis_min_val;
+           if(current_val < 2000000){
+             $('#slide_range').html(slide_range);
+           }
+            if(current_val == 2000000){
+                  var slide_range = 'Over $2 million';
+           }
+            $('#slide_range').html(slide_range);
+            $('.range_slider .irs-max').text('$2M+');
+      if(slide_range == "Over $2 million") {p_price = "$2000000"}else{p_price = slide_range};
+      per = $("#slide_per_range").text().split("%")[0];
+      est_amt = parseInt(p_price.toString().substring(1,p_price.length)) *  per / 100;
+            var slide_range = per + '% ($'+ est_amt +')' ;
+            $('#slide_per_range').html(slide_range);
+    }
+    });
+  $('.range_slider .irs-max').text('$2M+');  
+    createRangeSliders('range_02','slide_range2','range_slider2');
+    createRangeSliders('range_03','slide_range3','range_slider3'); 
+    createRangeSliders('range_04','slide_range4','range_slider4');  
+    createRangeSliders('range_05','slide_range5','range_slider5');  
+    createRangeSliders('range_06','slide_range6','range_slider6');
+    $("#per_range").ionRangeSlider({
+        type: "single",
+        min: 3,
+        max: 99,
+        from: 20,
+        keyboard: true,
+        step: 1,
+        postfix: '%',
+        onStart: function (data) {
+            var current_val = data.from;
+            var dis_min_val =  parseInt(current_val);
+      per = current_val
+      est_amt = parseInt(p_price.toString().substring(1,p_price.length)) *  per / 100;
+            var slide_range = dis_min_val + '% ($'+ est_amt +')' ;
+            $('#slide_per_range').html(slide_range);
+        },
+        onChange: function (data) {
+      var current_val = data.from;
             var dis_min_val = 0;
-            var dis_max_val = 0 ;
-            var step = 10;
-          if(current_val == 90){
-                                var slide_range = '81' + '%' + '<span> to </span>' + '90' + '%';
-                                }
-                            else{
-                                dis_min_val = current_val + 1;
-                                dis_max_val = dis_min_val +10 -1;
-                                var slide_range = dis_min_val + '%' + ' <span> to </span> ' + dis_max_val + '%';
-                               $('#slide_per_range').html(slide_range);
-                                }
-                              },
+            var step = 1;
+      dis_min_val = parseInt(current_val);
+      per = current_val
+      est_amt = parseInt(p_price.toString().substring(1,p_price.length)) *  per / 100;
+            var slide_range = dis_min_val + '% ($'+ est_amt +')' ;
+      $('#slide_per_range').html(slide_range); 
+        },
         onFinish: function (data) {
            var current_val = data.from;
-            var dis_min_val = 0;
-            var dis_max_val = 0 ;
-            var step = 10;
-           if(current_val == 90){
-                                var slide_range = '81' + '%' + '<span> to </span>' + '90' + '%';
-                                }
-                           else{
-                                dis_min_val = current_val + 1;
-                                dis_max_val = dis_min_val +10 -1;
-                                var slide_range = dis_min_val + '%' + ' <span> to </span> ' + dis_max_val + '%';
-                               $('#slide_per_range').html(slide_range);
-                                }
-                              },
+           var dis_min_val = 0;
+           var step = 1;
+           dis_min_val = parseInt(current_val);
+      per = current_val
+      est_amt = parseInt(p_price.toString().substring(1,p_price.length)) *  per / 100;
+       var slide_range = dis_min_val + '% ($'+ est_amt +')' ;
+           $('#slide_per_range').html(slide_range);
+        },
         onUpdate: function (data) {
             var current_val = data.from;
             var dis_min_val = 0;
-            var dis_max_val = 0 ;
-            var step = 10;
-           if(current_val == 90){
-                              var slide_range = '81' + '%' + '<span> to </span>' + '90' + '%';
-                              }
-                           else{
-                                dis_min_val = current_val + 1;
-                                dis_max_val = dis_min_val +10 -1;
-                                 var slide_range = dis_min_val + '%' + ' <span> to </span> ' + dis_max_val + '%';
-                                $('#slide_per_range').html(slide_range);
-                              }
-                        }
-                  });
-            });
-          $( window ).on( "load", function() {
-              $('.range_slider').find('.irs-max').text('$2M+');
-            });
-          $(window).resize(function () {
-             $('.range_slider .irs-max').text('$2M+');
-          });
+            var step = 1;
+            dis_min_val = parseInt(current_val);
+      per = current_val
+      est_amt = parseInt(p_price.toString().substring(1,p_price.length)) *  per / 100;
+            var slide_range = dis_min_val + '% ($'+ est_amt +')' ;
+            $('#slide_per_range').html(slide_range);
+        }
+  });
+  
+});
+   $( window ).on( "load", function() {
+        $('.range_slider').find('.irs-max').text('$2M+');
+        $('.range_slider2').find('.irs-max').text('$2M+');
+        $('.range_slider3').find('.irs-max').text('$2M+');
+        $('.range_slider4').find('.irs-max').text('$2M+');
+        $('.range_slider5').find('.irs-max').text('$2M+');
+        $('.range_slider6').find('.irs-max').text('$2M+');
+    });
+     $(window).resize(function () {
+        setTimeout(function(){ $('.range_slider .irs-max').text('$2M+'); }, 200);
+        setTimeout(function(){ $('.range_slider2 .irs-max').text('$2M+'); }, 200);
+        setTimeout(function(){ $('.range_slider3 .irs-max').text('$2M+'); }, 200);
+        setTimeout(function(){ $('.range_slider4 .irs-max').text('$2M+'); }, 200);
+        setTimeout(function(){ $('.range_slider5 .irs-max').text('$2M+'); }, 200);
+        setTimeout(function(){ $('.range_slider6 .irs-max').text('$2M+'); }, 200);
+        setTimeout(function(){ crediScoreSlider(); }, 200);
+    });        
+ 
     
   
     // Start the show!

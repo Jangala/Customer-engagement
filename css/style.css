@@ -1,10 +1,3 @@
-/* Global Styles */
-
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -52,13 +45,25 @@ table {
 @font-face {
     font-family: robotoregular;
     src: local('robotoregular'), url("../fonts/roboto/Roboto-Regular.eot");;
-    src: url('../fonts/roboto/Roboto-Regular.eot') format("embedded-opentype"), url("../fonts/roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url('../fonts/roboto/Roboto-Regular.woff') format("woff"), url('../fonts/roboto/Roboto-Regular.ttf') format('truetype');
+    src: url('../fonts/roboto/Roboto-Regular.eot') format("embedded-opentype"), 
+    url("../fonts/roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), 
+    url('../fonts/roboto/Roboto-Regular.woff') format("woff"), 
+    url('../fonts/roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: robotothin;
+    src: local('robotoregular'), url("../fonts/roboto/Roboto-Thin.eot");;
+    src: url('../fonts/roboto/Roboto-Thin.eot') format("embedded-opentype"), 
+    url("../fonts/roboto/Roboto-Thin.eot?#iefix") format("embedded-opentype"), 
+    url('../fonts/roboto/Roboto-Thin.woff') format("woff"), 
+    url('../fonts/roboto/Roboto-Thin.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 body {
     font: normal 14px robotoregular, sans-serif;
-    
 }
 
 .navbar-toggle {
@@ -130,7 +135,7 @@ body {
 .subhead h2, .subhead h3{
 	color: #000;
 	font-size:  3.125em;
-    font-family: 'Roboto Thin', sans-serif;
+    font-family: robotothin;
 	 font-weight: 100;
 	margin-top: 0px;
 }
@@ -142,7 +147,15 @@ color:#aaaaaa;
 	padding-right: 0px;
 	padding-left: 0px;
 }
-.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+.btn-default.active.focus, 
+.btn-default.active:focus, 
+.btn-default.active:hover, 
+.btn-default:active.focus, 
+.btn-default:active:focus,
+ .btn-default:active:hover,
+.open>.dropdown-toggle.btn-default.focus, 
+.open>.dropdown-toggle.btn-default:focus, 
+.open>.dropdown-toggle.btn-default:hover {
     color: #9c9c9c;
     background-color: #fff;
      border-top: 0px;
@@ -184,7 +197,7 @@ padding-bottom: 40px;
 font-size: 0.6em;
 }
 .pur{
-    padding: 45px;
+    padding: 50px;
 }
 
 .icon_1{
@@ -336,12 +349,12 @@ font-size: 0.6em;
 	 padding-right: 35px;
 	 color: #000;
     font-size:  1.2em ;
-    font-family: 'Roboto Thin', sans-serif;
+    font-family: robotothin;
 }
 .ali_dev2{
 	    padding-left: 65px;
 	    color: #9c9c9c;
-    font: normal 1.4em 'Roboto Thin', sans-serif;
+    font: normal 1.4em robotothin
 }
 .xs_resize_hu{
 	text-align: center;
@@ -396,7 +409,7 @@ font-size: 0.6em;
 .drop_btn .dropdown-menu{
 	width: 100%;
 	font-size:  1.4em ;
-	font-family: 'Roboto Thin', sans-serif
+	font-family: robotothin
 }
 .dropdown.btn-default:hover{
 	background-color: #fff;
@@ -414,7 +427,7 @@ font-size: 0.6em;
 	    margin-top: 30px;
     margin-bottom: 30px;
 }
-#pro_loc_content,#Purchase, #property_content, #property_content,#select_property{
+#pro_loc_content,#Purchase, #property_content, #property_content,#select_property, #cradit_score,#pro_loc_content_refinance,#pro_loc_content_cashout{
 	display: none;
 }
 #select_property .subhead h3{
@@ -426,7 +439,7 @@ padding-bottom: 110px;
 	
 }
 .back_option,.main_option1,.back1_option,.back2_option,.back3_option{
-	font-family: 'Roboto Thin', sans-serif;
+	font-family: robotothin;
 	font-size: 0.8em;
 	padding-bottom: 20px;
 	cursor: pointer;
@@ -497,7 +510,7 @@ padding:40px;
 		width:33px;
 	}
 	.drop_btn .btn{
-		    font: normal 1.3em 'Roboto Thin', sans-serif;
+		    font: normal 1.3em robotothin;
 	}
 	
 	.xs_resize_hu {
@@ -515,7 +528,7 @@ padding:40px;
 	}
 	.subhead h2, .subhead h3{
 		font-size: 1.8em;
-    	font-family: 'Roboto Thin', sans-serif;
+    	font-family: robotothin;
     	/*font-weight: 0;*/
     	line-height: 40px;
 	}
@@ -533,6 +546,10 @@ padding:40px;
 	#pro_loc_content .subhead{
     padding: 20px 10px 40px 10px;
 	}
+	#pro_loc_content_refinance .subhead,#pro_loc_content_cashout .subhead{
+    padding: 20px 10px 40px 10px;
+	}
+	
 	.range_create {
     padding-bottom: 10px;
 	}
@@ -565,7 +582,7 @@ padding:40px;
       background-position: center;
           background-size: 65px;
        }
-    .Refinance:active {   
+    .Refinance:active,.refin_selected {   
     	background-image:url('../images/Refinance_white1.png');
     	background-repeat: no-repeat;  
     	background-color:#f27521;
@@ -573,13 +590,13 @@ padding:40px;
 		background-size: 65px;
 		}
 		   
-	 .T_Case  {   
+	 .T_Case {   
 	 	background-image:url('../images/icn_take_out_cash.png');  
 	 	background-repeat: no-repeat;
 	 	background-position: center;
 	 	 background-size: 65px; 
 	 	   }
-    .T_Case:active {  
+    .T_Case:active,.T_Case_selected {  
         background-image:url('../images/take_out_us_white1.png');
     	background-repeat: no-repeat;  
     	background-color:#f27521;
@@ -593,34 +610,35 @@ padding:40px;
 	    border-left: 0px;
 	    background-color: transparent;
 	    border-radius: 0;
-	    color: #848484 !important;
-	    font-family: 'Roboto Thin', sans-serif;
+	    color: #34495e !important;
+	    font-family: robotothin;
     	font-style: italic;
     	border-bottom: 1px solid #b6b6b6;
 	}
-
+	.drop_padd_bottom option:first{
+		color: #848484;
+	}
 	.zip_input .form-control{
 	    border-right: 0px;
 	    border-top: 0px;
 	    border-left: 0px;
 	    border-radius: 0;
-	    color: #848484;
+	    color: #34495e;
 	    padding-left: 0px;
 	    -webkit-box-shadow: none;
 	    box-shadow: none;
 	    font-size: 1em;
 	        border-bottom: 1px solid #b6b6b6;
-	   font-family: 'Roboto Thin', sans-serif;
 	   font-style: italic;
 	    -webkit-transition: none,-webkit-box-shadow ease-in-out .15s;
 	    -o-transition:none,box-shadow ease-in-out .
 	}
 	.pur1{
-		    padding: 35px;
+		    padding: 50px;
 	}
 	.range_digit label {
 		font-size: 1.5em ;
-		font-family: 'Roboto Thin', sans-serif;
+		font-family: robotothin;
 		font-weight:100; 
 		float:left;
 		 width:50px; 
@@ -629,7 +647,7 @@ padding:40px;
 		}
 	.range_create label{
 		font-size:1.54em ;
-		font-family: 'Roboto Thin', sans-serif;
+		font-family: robotothin;
 		color: #1861a9;
 		font-weight: 100;
 	}
@@ -649,7 +667,7 @@ padding:40px;
 	    border-radius: 27px;
 	}
 	.irs-bar {
-	    height: 2px !important;
+	    height: 2px;
 	    top: 33px;
 	    border-top: 1px solid #428bca;
 	    border-bottom: 1px solid #428bca;
@@ -724,7 +742,7 @@ padding:40px;
 		    padding-left: 78px;
     		padding-right: 78px;
 	}
-	.iphone_xs,#Purchase .btn_next, #pro_loc_content .subhead,.type_condo_tab,.mainTab,.sect_four{
+	.iphone_xs,#Purchase .btn_next, #pro_loc_content .subhead,#pro_loc_content_refinance .subhead,#pro_loc_content_cashout .subhead,.type_condo_tab,.mainTab,.sect_four{
 		    padding-left: 78px;
     		padding-right: 78px;
 	}
@@ -754,20 +772,10 @@ padding:40px;
 	.last_cir{
 		padding-right: 0px; 
 	}
-	#pro_loc_content .subhead{
+	#pro_loc_content .subhead,#pro_loc_content_refinance .subhead,#pro_loc_content_cashout .subhead{
 		    padding: 0px 10px 40px 10px
 	}
-	.irs-slider {
-          top: 11px;
-	    width: 45px;
-	    height: 45px;
-	    border: 15px solid #a9c9e6;
-	    background: #DDD;
-	    background: #0c5497;
-	    border-radius: 27px;
-	    -moz-border-radius: 27px;
-	    cursor: pointer;
-	}
+	
 	.irs-bar-edge{
 		    width: 25px;
 	}
@@ -836,11 +844,6 @@ padding:40px;
 		font-family: 'Roboto ', sans-serif;
 		font-weight: 100;
 	}
-	.irs-slider{
-		    top: 17px;
-    width: 35px;
-    height: 35px;
-	}
 	.irs-bar-edge{
 		width: 20px;
 	}
@@ -855,6 +858,7 @@ padding:40px;
 /* i phone landscape */
 
 @media screen and (min-width:320px) and (max-width:480px) and (orientation : landscape) {
+	
 	.back_text h3{
 		 margin-top: 95px;
    		 margin-bottom: 90px;
@@ -879,22 +883,28 @@ padding:40px;
 		text-align: left;
 		padding-left: 35px;
 	}
-
+	.pur2 {
+		padding: 40px;
+	}
 }
 /* i phone portrait */
 
 @media screen and (max-width:320px) and (orientation : portrait) {
-.xs_resize_hu{
-	width:100%;
-	 padding-bottom: 20px;
+.txt_unit, .txt_unit1, .txt_unit2{font-size: 0.875em;}
+	.pur1{
+	padding: 40px;
 	}
-	.xs_resize_hu0new{
-		width: 100%;
+	.pur {
+		padding: 40px;
 	}
+	
 	.xs_resize_hu0{
 		margin-bottom: 10px;
 	}
-
+span#slide_range_credit {
+    font-size: 20px !important;
+	padding-top:20px;
+}
 }
 /*iphone4s landscape*/
 
@@ -921,7 +931,7 @@ padding:40px;
 		font-size: 2em;
 	}
 	.pur1 {
-    padding: 35px;
+    padding: 40px;
 	}
 	.icn_unit1, .icn_condo, .icn_unit2, .icn_unit3, .icn_unit4{
 		background-size: 50px;
@@ -981,7 +991,7 @@ padding:40px;
 	.zip_input .form-control,.btn_next .btn-warning{
 		font-size: 1em;
 	}
-	#pro_loc_content .subhead {
+	#pro_loc_content .subhead,#pro_loc_content_refinance .subhead,#pro_loc_content_cashout .subhead{
     padding: 0px 10px 40px 10px;
 	}
 	.hei_third h3 br{
@@ -999,7 +1009,7 @@ padding:40px;
 	}
 	.range_digit label {
 		font-size:1em;
-		font-family: 'Roboto Thin', sans-serif;
+		font-family: robotothin;
 		font-weight:100; 
 		float:left;
 		 width:50px; 
@@ -1008,7 +1018,7 @@ padding:40px;
 	}
 	.range_create label{
 		font-size:1em;
-		font-family: 'Roboto Thin', sans-serif;
+		font-family: robotothin;
 		color: #1861a9;
 		font-weight: 100;
 	}
@@ -1026,8 +1036,6 @@ padding:40px;
 	}
 	.irs-slider {
 	    top: 20px;
-	    width: 25px;
-	    height: 25px;
 	    border: 10px solid #a9c9e6;
 	    background: #DDD;
 	    background: #0c5497;
@@ -1037,7 +1045,7 @@ padding:40px;
 		padding-left: 0px;
 	}
 	.back_option, .main_option1, .back1_option, .back2_option, .back3_option {
-	    font-family: 'Roboto Thin', sans-serif;
+	    font-family: robotothin;
 	    font-size: 0.5em;
 	    padding-bottom: 20px;
 	    cursor: pointer;
@@ -1096,7 +1104,7 @@ padding:40px;
 		font-size: 1.4em;
 	}
 	.pur {
-    padding: 55px;
+    padding: 40px;
 	}
 	.back_text .container{
 		    height: 180px;
@@ -1107,13 +1115,13 @@ padding:40px;
     		font-size: 1.6em;
 	}
 	.pur2{
-		padding: 55px;
+		padding: 40px;
 	}
 	.Primary_re,.Vacation_h,.Investment_p{
 	background-size: 55px;
 	}
 	.pur1 {
-    padding: 55px;
+    padding: 40px;
 	}
 	.hei_third_B h3,.hei_third h3{
 		padding-bottom: 0px !important;
@@ -1207,13 +1215,7 @@ padding:40px;
 	.btn_next .btn-warning {
     font-size: 1em;
 	}
-	.irs-slider{
-		top: 17px;
-	    width: 35px;
-	    height: 35px;
-	    border: 12px solid #a9c9e6;
-
-	}
+	
 	.irs-bar-edge{
 		    width: 18px;
 	}
@@ -1256,8 +1258,92 @@ padding:40px;
     padding: 45px;
 	}
 }
+
+.range_slider2 span.irs-line {
+	height: 10px;
+	border-radius: 5px;
+	 background: 
+linear-gradient(90deg, #1761a8 16.66666666666667%, transparent 16.66666666666667%),
+linear-gradient(90deg, #4581b9 33.33333333333333%, transparent 33.33333333333333%),
+linear-gradient(90deg, #6898c6 50%, transparent 50%),
+linear-gradient(90deg, #8bb0d3 66.66666667%, transparent 66.66666667%),
+linear-gradient(90deg, #aec8e1 83.33333333%, transparent 83.33333333%),
+linear-gradient(90deg, #d1dfee 100%, transparent 100%);
+ background: 
+-o-linear-gradient(90deg, #1761a8 16.66666666666667%, transparent 16.66666666666667%),
+-o-linear-gradient(90deg, #4581b9 33.33333333333333%, transparent 33.33333333333333%),
+-o-linear-gradient(90deg, #6898c6 50%, transparent 50%),
+-o-linear-gradient(90deg, #8bb0d3 66.66666667%, transparent 66.66666667%),
+-o-linear-gradient(90deg, #aec8e1 83.33333333%, transparent 83.33333333%),
+-o-linear-gradient(90deg, #d1dfee 100%, transparent 100%);
+ background: 
+-moz-linear-gradient(90deg, #1761a8 16.66666666666667%, transparent 16.66666666666667%),
+-moz-linear-gradient(90deg, #4581b9 33.33333333333333%, transparent 33.33333333333333%),
+-moz-linear-gradient(90deg, #6898c6 50%, transparent 50%),
+-moz-linear-gradient(90deg, #8bb0d3 66.66666667%, transparent 66.66666667%),
+-moz-linear-gradient(90deg, #aec8e1 83.33333333%, transparent 83.33333333%),
+-moz-linear-gradient(90deg, #d1dfee 100%, transparent 100%);
+ background: 
+linear-gradient(90deg, #1761a8 16.66666666666667%, transparent 16.66666666666667%),
+linear-gradient(90deg, #4581b9 33.33333333333333%, transparent 33.33333333333333%),
+linear-gradient(90deg, #6898c6 50%, transparent 50%),
+linear-gradient(90deg, #8bb0d3 66.66666667%, transparent 66.66666667%),
+linear-gradient(90deg, #aec8e1 83.33333333%, transparent 83.33333333%),
+linear-gradient(90deg, #d1dfee 100%, transparent 100%);
+
+}	
+.range_slider2 .irs-bar, .range_slider2 .irs-bar-edge{display:none;}
+.range_slider2 .irs-slider{top:23px;}
+span#slide_range_credit {
+    font-size: 28px;
+	color: #1761a8;
+    font-family: robotoregular !important;
+	min-height: 50px;
+    display: block;
+}
+.selectedTab .icn_unit1{
+	background-image: url(../images/icn_unit1_w.png);
+    background-color: #f27521;
+	border-radius:50%;
+}
+.selectedTab .icn_condo{
+	background-image: url(../images/icn_condo_w.png);
+    background-color: #f27521;
+	border-radius:50%;
+}
+.selectedTab .icn_unit2{
+	background-image: url(../images/icn_unit2_w.png);
+    background-color: #f27521;
+	border-radius:50%;
+}
+.selectedTab .icn_unit3{
+	background-image: url(../images/icn_unit3_w.png);
+    background-color: #f27521;
+	border-radius:50%;
+}
+.selectedTab .icn_unit4{
+	background-image: url(../images/icn_unit4_w.png);
+    background-color: #f27521;
+	border-radius:50%;
+}
+.selectedTab .Primary_re{
+	background-image: url(../images/prim_recidency_w.png);
+    background-color: #f27521;
+	border-radius:50%;
+}
+.selectedTab .Vacation_h{
+	background-image: url(../images/vacation_w.png);
+    background-color: #f27521;
+	border-radius:50%;
+}
+.selectedTab .Investment_p{
+	background-image: url(../images/Investment_w.png);
+    background-color: #f27521;
+	border-radius:50%;
+}
+span.or_span {font-family: robotothin;font-size: 45px;color: #848484;}
 .zipcode_error {
     color: #ff0000;
- 	margin-top:10px;
-	display:none;
+ margin-top:10px;
+ display:none;
 }
