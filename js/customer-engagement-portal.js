@@ -456,7 +456,6 @@
         }         
     });
    
-
    function closeTooltips() {
       $('.c-tooltip').remove();
    }
@@ -1014,7 +1013,7 @@
             'currentMortgagePayment': v.curmortgagepayment,
             'isIncludeTaxes':         null,
             'impounds':               'YES',
-            //'propTaxMonthlyOryearly': 'Year',
+           // 'propTaxMonthlyOryearly': 'Year',
             //'propInsMonthlyOryearly': 'Year',
             'homeWorthToday':         v.estval,
             'propertyType':           v.residencetype,
@@ -1319,13 +1318,13 @@
                 "includeTaxes": cache.isIncludeTaxes
               },
               "propertyTypeMaster": {
-                "homeWorthToday": cache.homeWorthToday,
-                "homeZipCode": cache.zipCode,
-                //"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
-                //"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
-                "propertyTypeCd": cache.propertyType,
-                "residenceTypeCd": cache.residenceType
-              },
+            		"homeWorthToday": cache.homeWorthToday,
+            		"homeZipCode": cache.zipCode,
+            		//"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
+            		//"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
+            		"propertyTypeCd": cache.propertyType,
+            		"residenceTypeCd": cache.residenceType
+            	},
             'loanAmount': cache.loanAmount,
             'user' : {
               'firstName': v.firstName,
@@ -1347,13 +1346,13 @@
                 "includeTaxes": cache.isIncludeTaxes
               },
               "propertyTypeMaster": {
-                "homeWorthToday": cache.homeWorthToday,
-                "homeZipCode": cache.zipCode,
-                //"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
-                //"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
-                "propertyTypeCd": cache.propertyType,
-                "residenceTypeCd": cache.residenceType
-              },
+            		"homeWorthToday": cache.homeWorthToday,
+            		"homeZipCode": cache.zipCode,
+            		//"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
+            		//"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
+            		"propertyTypeCd": cache.propertyType,
+            		"residenceTypeCd": cache.residenceType
+            	},
             'loanAmount': cache.loanAmount,
             'user' : {
               'firstName': v.firstName,
@@ -1918,7 +1917,6 @@
                 });
               }
          });
-
     }
     //Get countycode for particular state
     $("#mobile_states").change(function(){
