@@ -114,7 +114,8 @@ module.exports = function(grunt) {
 						'./js/components/c-currency-input.js',
 						'./js/components/c-radio.js',
 						'./js/mobilenav.js',
-						'./js/customer-engagement-portal.js'
+						'./js/customer-engagement-portal.js',
+						'./js/ion.rangeSlider.js'
 						]
 				}
 			}
@@ -127,7 +128,12 @@ module.exports = function(grunt) {
 					{expand: true, src: ['js/vendors/jquery-*.min.js'], dest: 'prod'},
 					{expand: true, src: ['js/vendors/js_cookie.js'], dest: 'prod'},
 					{expand: true, src: ['js/vendors/bootstrap.custom.js'], dest: 'prod'},
-					{expand: true, src: ['js/mobilenav.js'], dest: 'prod'}
+					{expand: true, src: ['js/mobilenav.js'], dest: 'prod'},
+					{expand: true, src: ['images/*'], dest: 'prod'},
+					{expand: true, src: ['css/ion.rangeSlider.css'], dest: 'prod'},
+					{expand: true, src: ['css/ion.rangeSlider.skinHTML5.css'], dest: 'prod'},
+					{expand: true, src: ['css/normalize.css'], dest: 'prod'},
+					{expand: true, src: ['css/style.css'], dest: 'prod'}
 				],
 			},
 		},
