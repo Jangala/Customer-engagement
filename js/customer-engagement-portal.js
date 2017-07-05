@@ -950,8 +950,8 @@
             'currentMortgagePayment': v.curmortgagepayment,
             'isIncludeTaxes':         null,
             'impounds':               'YES',
-            'propTaxMonthlyOryearly': 'Year',
-            'propInsMonthlyOryearly': 'Year',
+            //'propTaxMonthlyOryearly': 'Year',
+            //'propInsMonthlyOryearly': 'Year',
             'homeWorthToday':         v.estval,
             'propertyType':           v.residencetype,
             'residenceType':          v.propertyuse,
@@ -972,8 +972,8 @@
             'currentMortgagePayment': v.curmortgagepayment,
             'isIncludeTaxes':         null,
             'impounds':               'YES',
-            'propTaxMonthlyOryearly': 'Year',
-            'propInsMonthlyOryearly': 'Year',
+           // 'propTaxMonthlyOryearly': 'Year',
+            //'propInsMonthlyOryearly': 'Year',
             'homeWorthToday':         v.estval,
             'propertyType':           v.residencetype,
             'residenceType':          v.propertyuse,
@@ -1278,8 +1278,8 @@
               "propertyTypeMaster": {
             		"homeWorthToday": cache.homeWorthToday,
             		"homeZipCode": cache.zipCode,
-            		"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
-            		"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
+            		//"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
+            		//"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
             		"propertyTypeCd": cache.propertyType,
             		"residenceTypeCd": cache.residenceType
             	},
@@ -1306,8 +1306,8 @@
               "propertyTypeMaster": {
             		"homeWorthToday": cache.homeWorthToday,
             		"homeZipCode": cache.zipCode,
-            		"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
-            		"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
+            		//"propTaxMonthlyOryearly": cache.propTaxMonthlyOryearly,
+            		//"propInsMonthlyOryearly": cache.propInsMonthlyOryearly,
             		"propertyTypeCd": cache.propertyType,
             		"residenceTypeCd": cache.residenceType
             	},
