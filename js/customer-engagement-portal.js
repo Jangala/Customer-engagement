@@ -6,7 +6,7 @@
   // Postpone execution until DOM is loaded
   $(function() {
     var API_URL_PREFIX = "../NewfiWeb/rest/";
-   // var API_URL_PREFIX = "http://52.74.75.203:8080/NewfiWeb/rest/";
+  // var API_URL_PREFIX = "http://52.74.75.203:8080/NewfiWeb/rest/";
     /**
      * Setup several app-wide collections:
      * 1. dict:
@@ -436,13 +436,32 @@
       }
     });
 
-    $('#zipcode').on('blur', function(e){
-      if(!$.isEmptyObject(mobile_data) && $('#zipcode').val()!=""){
-          $.ajax({
+   $("#zipcodeMobile").on('keydown', function(e){
+      // Allow: backspace, delete, tab, escape, enter and .
+      if ($.inArray(e.keyCode, [46, 8, 9, 27, 13]) !== -1 ||
+           // Allow: Ctrl/cmd+A
+          (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+           // Allow: Ctrl/cmd+C
+          (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+           // Allow: Ctrl/cmd+X
+          (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+           // Allow: home, end, left, right
+          (e.keyCode >= 35 && e.keyCode <= 39)) {
+               // let it happen, don't do anything
+               return;
+      }
+      // Ensure that it is a number and stop the keypress
+      if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+          e.preventDefault();
+      }
+    });
+
+    $('#zipcodeMobile').on('blur', function(e){
+        $.ajax({
             url:        API_URL_PREFIX+'states/zipCode',
             type:       'GET',
             datatype:   'text',
-            data:       {zipCode: function(){return $('#zipcode').val();}},
+            data:       {zipCode: function(){return $('#zipcodeMobile').val();}},
             success: function(data){ 
                   if(data.resultObject=="Valid ZipCode"){
                       $('.zipcode_error').css('display','none');
@@ -453,7 +472,6 @@
                   }                   
             }
          });
-        }         
     });
    
    function closeTooltips() {
@@ -1996,7 +2014,7 @@
           $(".sec_main_tab").attr("style","display:block");
           $('.step-1').removeAttr("style","display:none");
           if($("#zipcode1").val()==""){
-            mobile_data.zipcode=$("#zipcode").val();
+            mobile_data.zipcode=$("#zipcodeMobile").val();
           }else{
              mobile_data.zipcode=$("#zipcode1").val();
           }        
