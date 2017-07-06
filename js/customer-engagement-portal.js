@@ -974,7 +974,7 @@
             };
 
         }
-      // DRY: calculate downpayment in dollars
+       // DRY: calculate downpayment in dollars
       v.downpaymentdollars   = v.purchaseprice * v.downpaymentpercent / 100;
 
       // Return an object suitable for the chosen loan type
@@ -2104,7 +2104,7 @@
               mobile_data.downpayment=0;
               mobile_data.estval=$("#range_02").val();
               mobile_data.curmortgagebalance=$("#range_03").val();;
-              mobile_data.fha=$("#fha").val();
+              mobile_data.fha=$("#fha_m").val();
               $(".pro_loc_content_refinance").attr("style","display:none"); 
               $(".third_main_tab").attr("style","display:none"); 
               $(".back4_option").attr("style","display:none"); 
